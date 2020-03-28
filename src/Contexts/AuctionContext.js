@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 
+
 export const AuctionContext = createContext();
 
 const AuctionContextProvider = props => {
