@@ -14,7 +14,7 @@ const Admin = (/*props*/) => {
     return (
         <div className="card" id = "container">
             <blockquote class="blockquote text-center">
-                <h2>Admin Meny</h2>
+                <h3>Admin Meny</h3>
             </blockquote>            
             <div className = "row">
                 <div className = "col-sm">
