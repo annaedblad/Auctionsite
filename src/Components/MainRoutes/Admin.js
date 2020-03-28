@@ -52,8 +52,8 @@ const Admin = (/*props*/) => {
                         </div>
                         <div className="form-group row">                            
                             <div className="col-sm-11">                            
-                                <button type="submit" className="btn btn-outline-dark btn-sm float-right">Lägg till / Uppdatera</button>  {/*needs to be toggable or 2 buttons*/}
-                                <button type="button" className="btn btn-outline-dark btn-sm float-right">Rensa Formulär</button>                               
+                                <button type="submit" className="btn btn-outline-info my-2 my-sm-0 float-right">Lägg till / Uppdatera</button>  {/*needs to be toggable or 2 buttons*/}
+                                <button type="button" className="btn btn-outline-info my-2 my-sm-0 float-right">Rensa Formulär</button>                               
                             </div>                            
                         </div>
                     </form>
@@ -65,26 +65,28 @@ const Admin = (/*props*/) => {
                             <div class="card" id = "right">                                                        
                                 <ul className = "list-group overflow-auto">
                                     {/* just for testing, will be populated via mapping */ } 
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
-                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-dark btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
+                                    <a href="#" class="list-group-item list-group-item-action">Test 1 2 <button type="button" className="btn btn-outline-info btn-sm float-right">Ta bort</button></a>
                                 </ul>                             
                             </div>
                         </div>
