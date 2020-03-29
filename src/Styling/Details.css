@@ -1,0 +1,50 @@
+    .rightContainer{
+        text-align: center;
+        padding: 5%;
+        padding-top: 3%;
+    }
+
+    #utropsPris{
+        width: 25px;
+        height: 80px;
+        border: 1px solid black;
+        margin-bottom: 30px;
+    }
+
+    .test {
+        margin-top: 15px;
+    }
+
+    #bud{
+        height: 350px;
+        border: 1px solid black;
+        overflow-y: scroll;
+        margin: auto;
+    }
+    .leftRow1{
+        height:50px;
+        margin-bottom: 15px;
+        border: 1px solid black;
+    }
+
+    .leftRow2{
+        height:50px;
+        border: 1px solid black;
+        margin-bottom: 15px;
+    }
+
+    .leftRow3{
+        height:300px;
+        margin-bottom: 15px;
+        width: 450px;
+        border: 1px solid black;
+    }
+                    
+    .leftRow4{
+        border: 1px solid black;
+        height:140px;
+    }
+
+    .paddingCards {
+        padding: 25px;
+    }
