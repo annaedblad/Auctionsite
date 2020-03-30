@@ -3,12 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styling/Admin.css";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 
-const Admin = (/*props*/) => {
+const Admin = () => {
   //logic needs to be created
-  // let list = props.values.map(openAuctionItem => {
-  //     return(<li>{openAuctionItem} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
+  // let list = props.values.filter(allAuctions => {
+  //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
   // });
-  const { updateAuction } = useContext(AuctionContext);
+  const { updateAuction, allAuctions } = useContext(AuctionContext);
+
+  var time = new Date();
+  console.log(time);
+  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > time);
+  let list = ongoingAuctions.map(auction =>{
+    return(
+        <a className ="list-group-item list-group-item-action">{auction.Titel} <button type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></a>
+    );
+    
+  });
 
   let fakeAuctionUpdate = {
     AuktionID: 4676,
@@ -131,204 +141,8 @@ const Admin = (/*props*/) => {
               <div class="card" id="right">
                 <ul className="list-group overflow-auto">
                   {/* just for testing, will be populated via mapping */}
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    Test 1 2{" "}
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm float-right"
-                    >
-                      Delete
-                    </button>
-                  </a>
+                  
+                  {list}
                 </ul>
               </div>
             </div>
