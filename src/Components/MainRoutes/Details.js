@@ -4,9 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import '../../Styling/Details.css';
+import { useParams } from "react-router-dom";
 // import { Button } from 'reactstrap';
 
 const Details = () => {
+    let {id} = useParams();
+    console.log(id);
     return (
         <div className="card" id="container">
             <h1>Auktionstiteln</h1>
