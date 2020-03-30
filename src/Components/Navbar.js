@@ -12,6 +12,7 @@ const Navbar = () => {
         console.log(auction)
         listAuctions(auction);
         setAuctions('');
+        console.log("hehehe");
     }
     return (
         <div className="navbarContainer container">
