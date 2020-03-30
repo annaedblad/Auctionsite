@@ -21,9 +21,22 @@ const AuctionContextProvider = props => {
     console.log("It went thisss farrr");
 
   }
+
+  const updateAuction = (auction) =>{
+    let uri = 'http://nackowskis.azurewebsites.net/api/Auktion/2220';
+    fetch(uri,{
+     method: 'PUT',
+     body: JSON.stringify(auction),
+     headers: {
+     'Accept': 'application/json, text/plain, */*',
+     'Content-Type': 'application/json'
+     }
+     }).then(() => console.log("Auction Updated"));
+  }
+ 
   
   return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions}}>
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction}}>
       {props.children}
     </AuctionContext.Provider>
   );
