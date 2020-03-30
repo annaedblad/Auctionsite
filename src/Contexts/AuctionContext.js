@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 
-
 export const AuctionContext = createContext();
 
 const AuctionContextProvider = props => {
@@ -15,8 +14,29 @@ const AuctionContextProvider = props => {
     })();
   },[])
 
+  const [search, setSearch] = useState('');
+
+  const listAuctions = (searchParam) => {
+    setSearch(searchParam);
+    console.log("It went thisss farrr");
+
+  }
+
+  const updateAuction = (auction) =>{
+    let uri = 'http://nackowskis.azurewebsites.net/api/Auktion/2220';
+    fetch(uri,{
+     method: 'PUT',
+     body: JSON.stringify(auction),
+     headers: {
+     'Accept': 'application/json, text/plain, */*',
+     'Content-Type': 'application/json'
+     }
+     }).then(() => console.log("Auction Updated"));
+  }
+ 
+  
   return (
-    <AuctionContext.Provider value={{ allAuctions }}>
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction}}>
       {props.children}
     </AuctionContext.Provider>
   );

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import {NavLink} from 'react-router-dom';
+import { AuctionContext } from '../Contexts/AuctionContext';
 
 const Navbar = () => {
 
-    //Just for testing routing remove and replace with Bootstrap
-    
+    const { listAuctions } = useContext(AuctionContext);
+    const[ auction, setAuctions] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(auction)
+        listAuctions(auction);
+        setAuctions('');
+        console.log("hehehe");
+    }
     return (
         <div className="navbarContainer container">
             <nav className="navbar navbar-expand-sm justify-content-center">
@@ -25,11 +34,14 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <form className="form-inline">
-                    <input className="form-control mr-sm-2" 
+                <form  onSubmit={handleSubmit} className="form-inline">
+                    <input className="form-inline form-control mr-sm-2" 
                         type="search" 
-                        placeholder="Serach for auction" 
-                        aria-label="Search" />
+                        value={auction}
+                        placeholder="Search for auction" 
+                        aria-label="Search" 
+                        onChange={(e) => setAuctions(e.target.value)}
+                    />
                     <button className="btn btn-outline-info my-2 my-sm-0" 
                         type="submit">
                         Search
