@@ -14,16 +14,9 @@ const AuctionContextProvider = props => {
       setAllAuctions(fetchedData);
     })();
   },[])
-  
-    const GetActual = () => {
-    const data = "FakeFetchAllActual";
-    console.log("fetching");
-    return data;
-  };
-
 
   return (
-    <AuctionContext.Provider value={{ GetActual, allAuctions }}>
+    <AuctionContext.Provider value={{ allAuctions }}>
       {props.children}
     </AuctionContext.Provider>
   );
