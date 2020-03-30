@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import '../../Styling/Details.css';
-// import { Button } from 'reactstrap';
 
 const Details = () => {
     return (
