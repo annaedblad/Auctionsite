@@ -34,9 +34,15 @@ const AuctionContextProvider = props => {
      }).then(() => console.log("Auction Updated"));
   }
  
+  const appendLeadingZeroes = (n) =>{
+    if(n <= 9){
+      return "0" + n;
+    }
+    return n;
+  }
   
   return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction}}>
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes}}>
       {props.children}
     </AuctionContext.Provider>
   );

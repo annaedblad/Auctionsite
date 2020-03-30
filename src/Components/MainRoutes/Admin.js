@@ -8,10 +8,10 @@ const Admin = () => {
   // let list = props.values.filter(allAuctions => {
   //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
   // });
-  const { updateAuction, allAuctions } = useContext(AuctionContext);
+  const { updateAuction, allAuctions, appendLeadingZeroes } = useContext(AuctionContext);
 
   var now = new Date();
-  var date = now.getFullYear()+'-'+now.getMonth()+'-'+now.getDay()+'T'+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+  var date = (now.getFullYear()+'-'+appendLeadingZeroes(now.getMonth()+1)+'-'+appendLeadingZeroes(now.getDate())+'T'+appendLeadingZeroes(now.getHours())+':'+appendLeadingZeroes(now.getMinutes())+':'+appendLeadingZeroes(now.getSeconds()));
 
   console.log(date);
   let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > date);
