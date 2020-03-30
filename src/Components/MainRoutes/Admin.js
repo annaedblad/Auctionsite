@@ -10,9 +10,11 @@ const Admin = () => {
   // });
   const { updateAuction, allAuctions } = useContext(AuctionContext);
 
-  var time = new Date();
-  console.log(time);
-  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > time);
+  var now = new Date();
+  var date = now.getFullYear()+'-'+now.getMonth()+'-'+now.getDay()+'T'+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+
+  console.log(date);
+  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > date);
   let list = ongoingAuctions.map(auction =>{
     return(
         <a className ="list-group-item list-group-item-action">{auction.Titel} <button type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></a>
