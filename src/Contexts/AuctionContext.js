@@ -45,12 +45,25 @@ const AuctionContextProvider = props => {
   const fetchBids = (bids) => {
     let url = "";
   }
+<<<<<<< HEAD
   //Här slutar anna koda sitt styckeeee
 
 
 
   return (
     <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, getBids, bids }}>
+=======
+ 
+  const appendLeadingZeroes = (n) =>{
+    if(n <= 9){
+      return "0" + n;
+    }
+    return n;
+  }
+  
+  return (
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes}}>
+>>>>>>> a674c16b234698285584dd8ed068b2d175419092
       {props.children}
     </AuctionContext.Provider>
   );
