@@ -41,18 +41,7 @@ const AuctionContextProvider = props => {
     }).then(() => console.log("Auction Updated"));
   }
 
-  //Här börjar anna koda ta bort om något fuckar ur
-  const fetchBids = (bids) => {
-    let url = "";
-  }
-<<<<<<< HEAD
-  //Här slutar anna koda sitt styckeeee
 
-
-
-  return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, getBids, bids }}>
-=======
  
   const appendLeadingZeroes = (n) =>{
     if(n <= 9){
@@ -62,8 +51,7 @@ const AuctionContextProvider = props => {
   }
   
   return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes}}>
->>>>>>> a674c16b234698285584dd8ed068b2d175419092
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes, bids, getBids}}>
       {props.children}
     </AuctionContext.Provider>
   );
