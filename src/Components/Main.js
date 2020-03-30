@@ -8,9 +8,9 @@ const Main = () => {
   return (
     <Switch>
       <Route exact path="/" component={Auctions} />
+      <Route exact path="/Details" component={Details} />
+      <Route exact path="/Admin" component={Admin} />
       <Route path="/:id" component={Auctions} />
-      <Route path="/Details" component={Details} />
-      <Route path="/Admin" component={Admin} />
     </Switch>
   );
 };
