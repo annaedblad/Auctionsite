@@ -22,7 +22,7 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="nav-link rightItems">
-                        <NavLink to="/Historic"> 
+                        <NavLink to="/historic"> 
                             <span className="lead">Avslutade auktioner</span>
                         </NavLink>
                     </li>

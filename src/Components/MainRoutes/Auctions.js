@@ -7,12 +7,13 @@ const Auctions = () => {
   const { allAuctions, search, appendLeadingZeroes} = useContext(AuctionContext);
   let { id } = useParams();
 
-  console.log(search);
   const now = new Date();
   var date = (now.getFullYear()+'-'+appendLeadingZeroes(now.getMonth()+1)+'-'+appendLeadingZeroes(now.getDate())+'T'+appendLeadingZeroes(now.getHours())+':'+appendLeadingZeroes(now.getMinutes())+':'+appendLeadingZeroes(now.getSeconds()));
   console.log(date);
   const filter = allAuctions.filter(auction => auction.Titel.includes(search));
   console.log(filter);
+  console.log(`ID=${id}`);
+  console.log(`Sökt på:${search}`);
 
   if (id === "all") {
     return (
@@ -21,15 +22,16 @@ const Auctions = () => {
         <p>Detta är söksidan</p>
       </div>
     );
-  } else if (id === "historic") {
+  } 
+  else if (id === "historic") {
 
     let historicAuctions = allAuctions.filter(auction => 
-      auction.SlutDatum < date)
+      auction.SlutDatum < date && auction.Titel.toLowerCase().includes(search.toLowerCase() || !search))
     .map(auction => {
       return (
-        <div className="col-sm-4">
-          <div className="card" key={auction.AuktionID}>
-            <Link to={`/Details/${auction.AuktionID}`}>
+        <div className="col-sm-4" key={auction.AuktionID}>
+          <div className="card">
+            <Link className="link" to={`/Details/${auction.AuktionID}`}>
             <div id="auction_card">
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
@@ -54,7 +56,7 @@ const Auctions = () => {
       <div className="auctionContainer container text-center">
         <h1>Historical Auctions page</h1>
         <p className="lead">Detta är historiska sidan</p>
-          <div className="row justify-content-center">
+          <div className="row">
             {historicAuctions}
           </div>
 
@@ -63,11 +65,13 @@ const Auctions = () => {
  
   } else {
 
-    let actualAuctions = allAuctions.map(auction => {
+    let actualAuctions = allAuctions
+        .filter(auction => auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search)
+        .map(auction => {
         return(
-        <div className="card" key={auction.AuktionID}>
-          <div className="col-sm-4">
-            <Link to={`/Details/${auction.AuktionID}`}>
+        <div className="col-sm-4" key={auction.AuktionID}>
+        <div className="card">
+            <Link className="link" to={`/Details/${auction.AuktionID}`}>
             <div id="auction_card">
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>

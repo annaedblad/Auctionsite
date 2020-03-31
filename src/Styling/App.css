@@ -1,3 +1,11 @@
 #auction_card {
     width: 20rem;;
 }
+
+.link {
+    color: black;
+    text-decoration: none;
+}
+.link:hover {
+    color:rgb(0, 196, 0);
+}
