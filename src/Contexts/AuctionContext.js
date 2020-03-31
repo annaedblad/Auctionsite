@@ -86,13 +86,14 @@ const AuctionContextProvider = props => {
 
   const copyDetails = inId => {
     let id = allAuctions.filter(on => on.AuktionID == inId);
-    var title = document.getElementById("name").value = id.Titel;
-    var des = document.getElementById("description").value = id.Beskrivning;
-    var price = document.getElementById("price").value = id.Pris;
-    var start = document.getElementById("start").value = id.StartDatum;
-    var end = document.getElementById("end").value = id.SlutDatum;
+    document.getElementById("name").value = id[0].Titel;
+    document.getElementById("description").value = id[0].Beskrivning;
+    document.getElementById("price").value = id[0].Pris;
+    document.getElementById("start").value = id[0].StartDatum;
+    document.getElementById("end").value = id[0].SlutDatum;
     console.log(inId);
     console.log(id);    
+    console.log(id.Titel);
   }
   
 
