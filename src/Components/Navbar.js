@@ -9,10 +9,8 @@ const Navbar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(auction)
         listAuctions(auction);
         setAuctions('');
-        console.log("hehehe");
     }
     return (
         <div className="navbarContainer container">
