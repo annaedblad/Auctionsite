@@ -11,7 +11,7 @@ const AuctionContextProvider = props => {
       let fetchedData = await fetch(uri).then(res => res.json());
       setAllAuctions(fetchedData);
     })();
-  }, []);
+  });
 
   const [search, setSearch] = useState("");
 

@@ -8,38 +8,67 @@ const Admin = () => {
   // let list = props.values.filter(allAuctions => {
   //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
   // });
-  const { updateAuction, allAuctions, appendLeadingZeroes, bids, getBids, copyDetails, deleteAuction } = useContext(AuctionContext);
-
+  const {
+    updateAuction,
+    allAuctions,
+    appendLeadingZeroes,
+    bids,
+    getBids,
+    copyDetails,
+    deleteAuction
+  } = useContext(AuctionContext);
+  const handleDelete = e => {
+    deleteAuction(e.target.id);
+  };
   var now = new Date();
-  var date = (now.getFullYear()+'-'+appendLeadingZeroes(now.getMonth()+1)+'-'+appendLeadingZeroes(now.getDate())+'T'+appendLeadingZeroes(now.getHours())+':'+appendLeadingZeroes(now.getMinutes())+':'+appendLeadingZeroes(now.getSeconds()));
+  var date =
+    now.getFullYear() +
+    "-" +
+    appendLeadingZeroes(now.getMonth() + 1) +
+    "-" +
+    appendLeadingZeroes(now.getDate()) +
+    "T" +
+    appendLeadingZeroes(now.getHours()) +
+    ":" +
+    appendLeadingZeroes(now.getMinutes()) +
+    ":" +
+    appendLeadingZeroes(now.getSeconds());
 
-  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > date /*&& getBids(on.AuktionID) !== []*/);//runs endless loop
+  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > date);
   console.log(ongoingAuctions);
 
-  let list = ongoingAuctions.map(auction =>{
-
-    const handleDelete = (e) =>{
-      deleteAuction(e.target.id);
-    }
-    
-    return(
-        <li onClick = {copyDetails(auction)} className ="list-group-item list-group-item-action" key={auction.AuktionID}>{auction.Titel} <button id={auction.AuktionID} onClick = {handleDelete} type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></li>
+  let list = ongoingAuctions.map(auction => {
+    return (
+      <li
+        onClick={copyDetails(auction)}
+        className="list-group-item list-group-item-action"
+        key={auction.AuktionID}
+      >
+        {auction.Titel}{" "}
+        <button
+          id={auction.AuktionID}
+          onClick={handleDelete}
+          type="button"
+          className="btn btn-outline-info btn-sm float-right"
+        >
+          Delete
+        </button>
+      </li>
     );
-    
   });
 
-  let fakeAuctionUpdate = {
-    AuktionID: 4676,
-    Titel: "Antik testlampa 2",
-    Beskrivning: "Uppdaterad via kod",
-    StartDatum: "2020-03-26T00:00:00",
-    SlutDatum: "2020-03-31T00:00:00",
-    Gruppkod: 2220,
-    Utropspris: 20000,
-    SkapadAv: "Richard"
-  };
+  // let fakeAuctionUpdate = {
+  //   AuktionID: 4676,
+  //   Titel: "Antik testlampa 2",
+  //   Beskrivning: "Uppdaterad via kod",
+  //   StartDatum: "2020-03-26T00:00:00",
+  //   SlutDatum: "2020-03-31T00:00:00",
+  //   Gruppkod: 2220,
+  //   Utropspris: 20000,
+  //   SkapadAv: "Richard"
+  // };
 
-  updateAuction(fakeAuctionUpdate);
+  // updateAuction(fakeAuctionUpdate);
 
   return (
     <div className="card" id="container">
@@ -149,7 +178,7 @@ const Admin = () => {
               <div class="card" id="right">
                 <ul className="list-group overflow-auto">
                   {/* just for testing, will be populated via mapping */}
-                  
+
                   {list}
                 </ul>
               </div>
