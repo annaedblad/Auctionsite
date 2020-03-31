@@ -72,13 +72,13 @@ const AuctionContextProvider = props => {
     return n;
   }
 
-  const copyDetails = (auction) => {
+  const copyDetails = auction => {
 
-    // var title = document.getElementById("name").value = auction.Titel;
-    // var description = document.getElementById("description").value = auction.Beskrivning;
-    // var price = document.getElementById("price").value = auction.Pris;
-    // var start = document.getElementById("start").value = auction.StartDatum;
-    // var end = document.getElementById("end").value = auction.SlutDatum;
+    document.getElementById("name").value = auction.Titel;
+    document.getElementById("description").value = auction.Beskrivning;
+    document.getElementById("price").value = auction.Pris;
+    document.getElementById("start").value = auction.StartDatum;
+    document.getElementById("end").value = auction.SlutDatum;
 
   }
   

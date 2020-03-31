@@ -17,8 +17,12 @@ const Admin = () => {
     copyDetails,
     deleteAuction
   } = useContext(AuctionContext);
+  
   const handleDelete = e => {
     deleteAuction(e.target.id);
+  };
+  const handleCopyDetails = e => {
+    copyDetails(e.target.id);
   };
   var now = new Date();
   var date =
@@ -40,7 +44,7 @@ const Admin = () => {
   let list = ongoingAuctions.map(auction => {
     return (
       <li
-        onClick={copyDetails(auction)}
+        onClick={handleCopyDetails}
         className="list-group-item list-group-item-action"
         key={auction.AuktionID}
       >
