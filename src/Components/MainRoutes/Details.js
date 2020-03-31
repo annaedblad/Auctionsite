@@ -9,31 +9,56 @@ import { AuctionContext } from "../../Contexts/AuctionContext";
 
 const Details = () => {
     let { id } = useParams();
-    const { allAuctions } = useContext(AuctionContext);
-
+    const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
-    const { getBids } = useContext(AuctionContext);
 
-    const { bids } = useContext(AuctionContext);
+    async function handleSubmit(e) {
+        e.preventDefault();
+        let formName = document.getElementById("formName");
+        let bidAmount = document.getElementById("formBid");
+
+        let fakeBid = {
+            Summa: bidAmount.value,
+            AuktionID: id,
+            Budgivare: formName.value
+        }
+
+        await setNewBid(fakeBid);
+        await getBids(id);
+    }
+
     if (specificAuction !== undefined && bids !== undefined) {
-
         const highestBid = Math.max(...bids.map(o => o.Summa), 0);
-        console.log(highestBid);
-        bids.sort((a,b) => (a.Summa < b.Summa) ? 1 : -1);
 
-        let items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
+        bids.sort(
+            function (a, b) {
+                if (a.Summa === b.Summa) {
+                    return b.Budgivare - a.Budgivare;
+                }
+                return a.Summa < b.Summa ? 1 : -1;
+            });
+        let items;
+        if (bids.length == 0) {
+            getBids(id);
+        }
+        items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
 
+        let listBids = "";
         let openOrNot = "";
         let winningBid = "";
         let currentDate = new Date();
         if (currentDate.getTime() < Date.parse(specificAuction.SlutDatum)) {
             openOrNot = "Auktionen är öppen";
-           
+            listBids = items;
+            winningBid = "Vinnarbud ej klart";
+
         }
         else {
             openOrNot = "Auktionen är stängd";
             winningBid = "Vinnande bud: " + highestBid + " kr";
+            listBids = "Budhistorik ej tillgänglig vid avslutad auktion";
         }
+
         return (
             <div className="card" id="container">
                 <h1>{specificAuction.Titel}</h1>
@@ -53,17 +78,18 @@ const Details = () => {
                                 <Col md={12} id="utropsPris">Slutdatum: {specificAuction.SlutDatum.substring(0, 10)} <br></br> Utropspris: {specificAuction.Utropspris} <br></br> Antal bud: {items.length}</Col>
                             </Row>
                             <Row>
-                                <Col md={8} id="bud"> Lista på bud: {items}
+                                <Col md={8} id="bud"> Lista på bud: {listBids}
                                 </Col>
 
                             </Row>
                             <Row>
                                 <Col md={12}>
-                                    <Form className="test">
-                                        <Form.Group controlId="formBasicPassword">
-                                            <Form.Control type="text" placeholder="Ange bud" />
+                                    <Form className="test" onSubmit={handleSubmit}>
+                                        <Form.Group controlId="formName">
+                                            <Form.Control type="text" name="formName" placeholder="Ange namn" />
                                         </Form.Group>
-                                        <Form.Group controlId="formBasicCheckbox">
+                                        <Form.Group controlId="formBid">
+                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" />
                                         </Form.Group>
                                         <Button variant="outline-dark" type="submit">
                                             Lägg bud

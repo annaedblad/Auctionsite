@@ -11,7 +11,7 @@ const AuctionContextProvider = props => {
       let fetchedData = await fetch(uri).then(res => res.json());
       setAllAuctions(fetchedData);
     })();
-  });
+  },[allAuctions]);
 
   const [search, setSearch] = useState("");
 
@@ -58,11 +58,23 @@ const AuctionContextProvider = props => {
     }).then(() => console.log("Auction Created"));
   };
 
+  async function setNewBid (bid) {
+    let uri = 'http://nackowskis.azurewebsites.net/api/bud/2220/';
+    await fetch(uri, {
+      method: 'POST',
+      body: JSON.stringify(bid),
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(() => console.log("Updated"));
+  }
+
   const deleteAuction = id => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/" + id;
     fetch(uri, {
       method: "DELETE"
-      }).then(() => console.log("Auction Deleted"));
+      }).then(() => console.log(`Auction with id ${id} deleted`));
   };
 
   const appendLeadingZeroes = n => {
@@ -96,6 +108,7 @@ const AuctionContextProvider = props => {
         bids,
         getBids,
         copyDetails,
+        setNewBid,
         returnBids        
       }}
     >
