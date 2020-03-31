@@ -11,7 +11,7 @@ const AuctionContextProvider = props => {
       let fetchedData = await fetch(uri).then(res => res.json());
       setAllAuctions(fetchedData);
     })();
-  });
+  },[allAuctions]);
 
   const [search, setSearch] = useState("");
 
@@ -62,7 +62,7 @@ const AuctionContextProvider = props => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/" + id;
     fetch(uri, {
       method: "DELETE"
-      }).then(() => console.log("Auction Deleted"));
+      }).then(() => console.log(`Auction with id ${id} deleted`));
   };
 
   const appendLeadingZeroes = n => {
