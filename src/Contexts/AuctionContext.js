@@ -82,6 +82,7 @@ const AuctionContextProvider = props => {
         deleteAuction,
         appendLeadingZeroes,
         bids,
+        returnBids,
         getBids
       }}
     >
