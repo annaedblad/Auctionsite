@@ -2,17 +2,16 @@
 import React, {useContext} from 'react';
 import {AuctionContext} from '../../Contexts/AuctionContext';
 import {useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Auctions = () => {
   const { allAuctions, search } = useContext(AuctionContext);
   let { id } = useParams();
 
-//   console.log(searchQuery);
-//   console.log(allAuctions);
-//   console.log(id);
   console.log(search);
 
-
+  const filter = allAuctions.filter(auction => auction.Titel.includes(search));
+  console.log(filter);
 
   if (id === "all") {
     return (
@@ -26,12 +25,22 @@ const Auctions = () => {
       <div className="auctionContainer">
         <h1>Historical Auctions page</h1>
         <p>Detta är historiska sidan</p>
+          <div className="container">
+            let historicAuctions = allAuctions.map(auction => {
+
+            })
+          </div>
+
       </div>
     );
   } else {
+
     let actualAuctions = allAuctions.map(auction => {
-        return(<div className="card" key={auction.AuktionID}>
-            <div className="card" id="auction_card">
+        return(
+      <div className="col-md-4">
+        <div className="card" key={auction.AuktionID}>
+            <Link to={`/Details/${auction.AuktionID}`}>
+            <div id="auction_card">
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
                     <p className="card-text text-center">{auction.Beskrivning}</p>
@@ -43,12 +52,17 @@ const Auctions = () => {
                     </ul>
                 </div>
             </div>
-        </div>);
+            </Link>
+        </div>
+        </div>
+        );
     })
     return (
-        <div className="auctionContainer">
-          <h1>Actual Auctions page</h1>
-          {actualAuctions}
+        <div className="auctionContainer container">
+          <h1 className="text-center">Actual Auctions page</h1>
+          <div className="row">
+            {actualAuctions}
+          </div>
         </div>
       );
   }
