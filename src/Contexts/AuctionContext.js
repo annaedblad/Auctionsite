@@ -38,8 +38,6 @@ const AuctionContextProvider = props => {
       }
     }).then(() => console.log("Auction Updated"));
   }
-
-
  
   const appendLeadingZeroes = (n) =>{
     if(n <= 9){
