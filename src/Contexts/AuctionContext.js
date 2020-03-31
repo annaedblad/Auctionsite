@@ -45,9 +45,19 @@ const AuctionContextProvider = props => {
     }
     return n;
   }
+
+  const copyDetails = (auction) => {
+
+    var title = document.getElementById("name").value = auction.Titel;
+    var description = document.getElementById("description").value = auction.Beskrivning;
+    var pris = document.getElementById("price").value = auction.Pris;
+    var start = document.getElementById("start").value = auction.StartDatum;
+    var end = document.getElementById("end").value = auction.SlutDatum;
+
+  }
   
   return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes, bids, getBids}}>
+    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes, bids, getBids, copyDetails}}>
       {props.children}
     </AuctionContext.Provider>
   );
