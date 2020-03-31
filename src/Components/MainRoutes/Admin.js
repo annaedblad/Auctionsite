@@ -8,7 +8,7 @@ const Admin = () => {
   // let list = props.values.filter(allAuctions => {
   //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
   // });
-  const { updateAuction, allAuctions, appendLeadingZeroes, bids, getBids, copyDetails } = useContext(AuctionContext);
+  const { updateAuction, allAuctions, appendLeadingZeroes, bids, getBids, copyDetails, deleteAuction } = useContext(AuctionContext);
 
   var now = new Date();
   var date = (now.getFullYear()+'-'+appendLeadingZeroes(now.getMonth()+1)+'-'+appendLeadingZeroes(now.getDate())+'T'+appendLeadingZeroes(now.getHours())+':'+appendLeadingZeroes(now.getMinutes())+':'+appendLeadingZeroes(now.getSeconds()));
@@ -18,7 +18,7 @@ const Admin = () => {
 
   let list = ongoingAuctions.map(auction =>{
     return(
-        <li onClick = {copyDetails(auction)} className ="list-group-item list-group-item-action" key={auction.AuktionID}>{auction.Titel} <button type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></li>
+        <li onClick = {copyDetails(auction)} className ="list-group-item list-group-item-action" key={auction.AuktionID}>{auction.Titel} <button onClick = {deleteAuction(auction.AuctionID)} type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></li>
     );
     
   });

@@ -17,12 +17,9 @@ const AuctionContextProvider = props => {
 
   const listAuctions = searchParam => {
     setSearch(searchParam);
-<<<<<<< HEAD
 
-=======
     console.log("It went thisss farrr");
   };
->>>>>>> 9d37d61e0159ecf60e7ce990979ea7a40811a149
   const [bids, setBids] = useState([]);
 
   async function getBids(auctionID) {
@@ -73,23 +70,18 @@ const AuctionContextProvider = props => {
       return "0" + n;
     }
     return n;
-<<<<<<< HEAD
   }
 
   const copyDetails = (auction) => {
 
     var title = document.getElementById("name").value = auction.Titel;
     var description = document.getElementById("description").value = auction.Beskrivning;
-    var pris = document.getElementById("price").value = auction.Pris;
+    var price = document.getElementById("price").value = auction.Pris;
     var start = document.getElementById("start").value = auction.StartDatum;
     var end = document.getElementById("end").value = auction.SlutDatum;
 
   }
   
-  return (
-    <AuctionContext.Provider value={{ allAuctions, search, listAuctions, updateAuction, appendLeadingZeroes, bids, getBids, copyDetails}}>
-=======
-  };
 
   return (
     <AuctionContext.Provider
@@ -102,10 +94,10 @@ const AuctionContextProvider = props => {
         deleteAuction,
         appendLeadingZeroes,
         bids,
-        getBids
+        getBids,
+        copyDetails
       }}
     >
->>>>>>> f71a91ee9d88a0b03008a1f0e92505063aea45dc
       {props.children}
     </AuctionContext.Provider>
   );
