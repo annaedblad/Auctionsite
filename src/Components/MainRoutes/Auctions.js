@@ -26,7 +26,7 @@ const Auctions = () => {
   else if (id === "historic") {
 
     let historicAuctions = allAuctions.filter(auction => 
-      auction.SlutDatum < date && auction.Titel.toLowerCase().includes(search.toLowerCase() || !search))
+      auction.SlutDatum < date && (auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search))
     .map(auction => {
       return (
         <div className="col-sm-4" key={auction.AuktionID}>
