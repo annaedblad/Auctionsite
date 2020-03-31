@@ -95,9 +95,8 @@ const AuctionContextProvider = props => {
         appendLeadingZeroes,
         bids,
         getBids,
-        copyDetails
-        returnBids,
-        getBids
+        copyDetails,
+        returnBids        
       }}
     >
       {props.children}
