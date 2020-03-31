@@ -38,7 +38,7 @@ const Auctions = () => {
                     <p className="card-text text-center">{auction.Beskrivning}</p>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">Start: {auction.StartDatum}</li>
-                        <li className="list-group-item">Slut: {auction.StartDatum}</li>
+                        <li className="list-group-item">Slut: {auction.SlutDatum}</li>
                         <li className="list-group-item">Utropspris: {auction.Utropspris} kr</li>
                         <li className="list-group-item">Nuvarande pris: xx kr</li>
                     </ul>
