@@ -17,8 +17,13 @@ const Admin = () => {
   console.log(ongoingAuctions);
 
   let list = ongoingAuctions.map(auction =>{
+
+    const handleDelete = (e) =>{
+      deleteAuction(e.target.id);
+    }
+    
     return(
-        <li onClick = {copyDetails(auction)} className ="list-group-item list-group-item-action" key={auction.AuktionID}>{auction.Titel} <button onClick = {deleteAuction(auction.AuctionID)} type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></li>
+        <li onClick = {copyDetails(auction)} className ="list-group-item list-group-item-action" key={auction.AuktionID}>{auction.Titel} <button id={auction.AuktionID} onClick = {handleDelete} type="button" className="btn btn-outline-info btn-sm float-right">Delete</button></li>
     );
     
   });

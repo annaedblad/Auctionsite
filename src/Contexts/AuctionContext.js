@@ -74,11 +74,11 @@ const AuctionContextProvider = props => {
 
   const copyDetails = (auction) => {
 
-    var title = document.getElementById("name").value = auction.Titel;
-    var description = document.getElementById("description").value = auction.Beskrivning;
-    var price = document.getElementById("price").value = auction.Pris;
-    var start = document.getElementById("start").value = auction.StartDatum;
-    var end = document.getElementById("end").value = auction.SlutDatum;
+    // var title = document.getElementById("name").value = auction.Titel;
+    // var description = document.getElementById("description").value = auction.Beskrivning;
+    // var price = document.getElementById("price").value = auction.Pris;
+    // var start = document.getElementById("start").value = auction.StartDatum;
+    // var end = document.getElementById("end").value = auction.SlutDatum;
 
   }
   
