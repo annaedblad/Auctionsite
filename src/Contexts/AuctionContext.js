@@ -86,11 +86,13 @@ const AuctionContextProvider = props => {
 
   const copyDetails = inId => {
     let id = allAuctions.filter(on => on.AuktionID == inId);
+    
     document.getElementById("name").value = id[0].Titel;
     document.getElementById("description").value = id[0].Beskrivning;
     document.getElementById("price").value = id[0].Utropspris;
-    document.getElementById("start").value = id[0].StartDatum;
+    document.getElementById("start").value = new Date(Date.parse(id[0].StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','');
     document.getElementById("end").value = id[0].SlutDatum;
+    document.getElementById("creator").value = id[0].SkapadAv;
     console.log(inId);
     console.log(id);    
     console.log(id.Titel);

@@ -159,6 +159,19 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">
+                  Creator
+                </label>
+                <div className="col-sm-9">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="creator"
+                    required                                        
+                  />
+                </div>
+              </div>
+              <div className="form-group row">
                 <div className="col-sm-11">
                   <button
                     type="submit"
