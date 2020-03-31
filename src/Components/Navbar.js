@@ -22,8 +22,8 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="nav-link rightItems">
-                        <NavLink to="/Details"> 
-                            <span className="lead">Details</span>
+                        <NavLink to="/Historic"> 
+                            <span className="lead">Avslutade auktioner</span>
                         </NavLink>
                     </li>
                     <li className="nav-link rightItems">
