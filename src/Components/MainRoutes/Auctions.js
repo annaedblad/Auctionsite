@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {AuctionContext} from '../../Contexts/AuctionContext';
 import {useParams} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Auctions = () => {
   const { allAuctions, search, appendLeadingZeroes} = useContext(AuctionContext);
@@ -9,11 +9,6 @@ const Auctions = () => {
 
   const now = new Date();
   var date = (now.getFullYear()+'-'+appendLeadingZeroes(now.getMonth()+1)+'-'+appendLeadingZeroes(now.getDate())+'T'+appendLeadingZeroes(now.getHours())+':'+appendLeadingZeroes(now.getMinutes())+':'+appendLeadingZeroes(now.getSeconds()));
-  console.log(date);
-  const filter = allAuctions.filter(auction => auction.Titel.includes(search));
-  console.log(filter);
-  console.log(`ID=${id}`);
-  console.log(`Sökt på:${search}`);
 
   if (id === "all") {
     return (
@@ -31,7 +26,7 @@ const Auctions = () => {
       return (
         <div className="col-sm-4" key={auction.AuktionID}>
           <div className="card">
-            <Link className="link" to={`/Details/${auction.AuktionID}`}>
+            <a className="link" href={`/Details/${auction.AuktionID}`}>
             <div id="auction_card">
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
@@ -44,7 +39,7 @@ const Auctions = () => {
                     </ul>
                 </div>
             </div>
-            </Link>
+            </a>
           </div>
         </div>
       )
@@ -71,7 +66,7 @@ const Auctions = () => {
         return(
         <div className="col-sm-4" key={auction.AuktionID}>
         <div className="card">
-            <Link className="link" to={`/Details/${auction.AuktionID}`}>
+            <NavLink className="link" to={`/Details/${auction.AuktionID}`}>
             <div id="auction_card">
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
@@ -84,7 +79,7 @@ const Auctions = () => {
                     </ul>
                 </div>
             </div>
-            </Link>
+            </NavLink>
         </div>
         </div>
         );
