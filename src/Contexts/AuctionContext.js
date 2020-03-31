@@ -77,21 +77,22 @@ const AuctionContextProvider = props => {
       }).then(() => console.log(`Auction with id ${id} deleted`));
   };
 
-  const appendLeadingZeroes = n => {
+  /*const appendLeadingZeroes = n => {
     if (n <= 9) {
       return "0" + n;
     }
     return n;
-  }
+  }*/
 
-  const copyDetails = auction => {
-
-    document.getElementById("name").value = auction.Titel;
-    document.getElementById("description").value = auction.Beskrivning;
-    document.getElementById("price").value = auction.Pris;
-    document.getElementById("start").value = auction.StartDatum;
-    document.getElementById("end").value = auction.SlutDatum;
-
+  const copyDetails = inId => {
+    let id = allAuctions.filter(on => on.AuktionID == inId);
+    var title = document.getElementById("name").value = id.Titel;
+    var des = document.getElementById("description").value = id.Beskrivning;
+    var price = document.getElementById("price").value = id.Pris;
+    var start = document.getElementById("start").value = id.StartDatum;
+    var end = document.getElementById("end").value = id.SlutDatum;
+    console.log(inId);
+    console.log(id);    
   }
   
 
@@ -104,7 +105,7 @@ const AuctionContextProvider = props => {
         updateAuction,
         createAuction,
         deleteAuction,
-        appendLeadingZeroes,
+        //appendLeadingZeroes,
         bids,
         getBids,
         copyDetails,

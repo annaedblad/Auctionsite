@@ -11,7 +11,7 @@ const Admin = () => {
   const {
     updateAuction,
     allAuctions,
-    appendLeadingZeroes,
+    //appendLeadingZeroes,
     bids,
     getBids,
     copyDetails,
@@ -24,26 +24,28 @@ const Admin = () => {
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
   };
-  var now = new Date();
-  var date =
-    now.getFullYear() +
+  var currentDate = new Date();
+  
+  /*var date =
+  currentDate.getFullYear() +
     "-" +
-    appendLeadingZeroes(now.getMonth() + 1) +
+    appendLeadingZeroes(currentDate.getMonth() + 1) +
     "-" +
-    appendLeadingZeroes(now.getDate()) +
+    appendLeadingZeroes(currentDate.getDate()) +
     "T" +
-    appendLeadingZeroes(now.getHours()) +
+    appendLeadingZeroes(currentDate.getHours()) +
     ":" +
-    appendLeadingZeroes(now.getMinutes()) +
+    appendLeadingZeroes(currentDate.getMinutes()) +
     ":" +
-    appendLeadingZeroes(now.getSeconds());
+    appendLeadingZeroes(currentDate.getSeconds());*/
 
-  let ongoingAuctions = allAuctions.filter(on => on.SlutDatum > date);
-  console.log(ongoingAuctions);
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
+  
 
   let list = ongoingAuctions.map(auction => {
     return (
       <li
+        id={auction.AuktionID}
         onClick={handleCopyDetails}
         className="list-group-item list-group-item-action"
         key={auction.AuktionID}
@@ -95,7 +97,7 @@ const Admin = () => {
                     required
                     maxLength="50"
                     minLength="5"
-                    placeholder="max 50 signs"
+                    placeholder="max 50 signs"                    
                   />
                 </div>
               </div>
