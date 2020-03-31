@@ -58,6 +58,18 @@ const AuctionContextProvider = props => {
     }).then(() => console.log("Auction Created"));
   };
 
+  async function setNewBid (bid) {
+    let uri = 'http://nackowskis.azurewebsites.net/api/bud/2220/';
+    await fetch(uri, {
+      method: 'POST',
+      body: JSON.stringify(bid),
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(() => console.log("Updated"));
+  }
+
   const deleteAuction = id => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/" + id;
     fetch(uri, {
@@ -96,6 +108,7 @@ const AuctionContextProvider = props => {
         bids,
         getBids,
         copyDetails,
+        setNewBid,
         returnBids        
       }}
     >
