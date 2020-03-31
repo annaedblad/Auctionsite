@@ -17,15 +17,22 @@ const Details = () => {
     const { bids } = useContext(AuctionContext);
     if (specificAuction !== undefined && bids !== undefined) {
 
-        var items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
-        console.log(items);
+        const highestBid = Math.max(...bids.map(o => o.Summa), 0);
+        console.log(highestBid);
+        bids.sort((a,b) => (a.Summa < b.Summa) ? 1 : -1);
+
+        let items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
+
         let openOrNot = "";
+        let winningBid = "";
         let currentDate = new Date();
         if (currentDate.getTime() < Date.parse(specificAuction.SlutDatum)) {
             openOrNot = "Auktionen är öppen";
+           
         }
         else {
             openOrNot = "Auktionen är stängd";
+            winningBid = "Vinnande bud: " + highestBid + " kr";
         }
         return (
             <div className="card" id="container">
@@ -34,7 +41,7 @@ const Details = () => {
                     <Col md={6} className="card" id="leftCard">
                         <div className="paddingCards">
                             <Row className="leftRow1">{openOrNot}</Row>
-                            <Row className="leftRow2">Vinnande bud: </Row>
+                            <Row className="leftRow2">{winningBid}</Row>
                             <Row className="leftRow3">bild på objektet</Row>
                             <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
                         </div>
