@@ -88,7 +88,7 @@ const AuctionContextProvider = props => {
     let id = allAuctions.filter(on => on.AuktionID == inId);
     document.getElementById("name").value = id[0].Titel;
     document.getElementById("description").value = id[0].Beskrivning;
-    document.getElementById("price").value = id[0].Pris;
+    document.getElementById("price").value = id[0].Utropspris;
     document.getElementById("start").value = id[0].StartDatum;
     document.getElementById("end").value = id[0].SlutDatum;
     console.log(inId);
