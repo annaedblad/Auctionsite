@@ -18,8 +18,6 @@ const AuctionContextProvider = props => {
 
   const listAuctions = (searchParam) => {
     setSearch(searchParam);
-    console.log("It went thisss farrr");
-
   }
 
   const updateAuction = (auction) =>{

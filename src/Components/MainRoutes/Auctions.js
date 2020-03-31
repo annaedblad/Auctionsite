@@ -4,10 +4,9 @@ import {AuctionContext} from '../../Contexts/AuctionContext';
 import {useParams} from 'react-router-dom';
 
 const Auctions = () => {
-  const { allAuctions } = useContext(AuctionContext);
+  const { allAuctions, search } = useContext(AuctionContext);
   let { id } = useParams();
 
-  const { search } = useContext(AuctionContext);
 //   console.log(searchQuery);
 //   console.log(allAuctions);
 //   console.log(id);
