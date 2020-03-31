@@ -17,13 +17,24 @@ const AuctionContextProvider = props => {
 
   const listAuctions = searchParam => {
     setSearch(searchParam);
+<<<<<<< HEAD
 
+=======
+    console.log("It went thisss farrr");
+  };
+>>>>>>> 9d37d61e0159ecf60e7ce990979ea7a40811a149
   const [bids, setBids] = useState([]);
 
   async function getBids(auctionID) {
     let uri = "http://nackowskis.azurewebsites.net/api/bud/2220/" + auctionID;
     let fetchedData = await fetch(uri).then(res => res.json());
     setBids(fetchedData);
+  }
+
+  async function returnBids(auctionID) {
+    let uri = "http://nackowskis.azurewebsites.net/api/bud/2220/" + auctionID;
+    let fetchedData = await fetch(uri).then(res => res.json());
+    return fetchedData;
   }
 
   const updateAuction = auction => {
