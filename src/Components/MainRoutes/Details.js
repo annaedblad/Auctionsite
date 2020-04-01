@@ -88,12 +88,12 @@ const Details = () => {
                                 <Col md={12}>
                                     <Form className="test" onSubmit={handleSubmit}>
                                         <Form.Group controlId="formName">
-                                            <Form.Control type="text" name="formName" placeholder="Ange namn" disabled={!isOpen} />
+                                            <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2"  disabled={!isOpen} />
                                         </Form.Group>
                                         <Form.Group controlId="formBid">
-                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" disabled={!isOpen} />
+                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1"  disabled={!isOpen} />
                                         </Form.Group>
-                                        <Button id="bidButton" className="btn btn-secondary btn-lg disabled" variant="outline-dark" type="submit" disabled={!isOpen}>
+                                        <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                 </Button>
                                     </Form>

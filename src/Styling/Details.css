@@ -48,3 +48,7 @@
     .paddingCards {
         padding: 25px;
     }
+
+    button[disabled=disabled], button:disabled {
+       cursor: auto;
+    }
