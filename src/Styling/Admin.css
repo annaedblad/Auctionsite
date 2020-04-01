@@ -25,3 +25,7 @@ label{
 button{
     margin-left: 5px
 }
+
+li {
+    cursor: pointer;
+}
