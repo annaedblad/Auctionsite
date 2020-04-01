@@ -16,6 +16,15 @@ const AuctionContextProvider = props => {
     })();
   },[]);
 
+  const updateAllAuctions = async () =>{
+    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+      let fetchedData = await fetch(uri).then(res => res.json()).then(data => {
+        console.log(data);
+        return data;
+      });
+      setAllAuctions(fetchedData);
+  }
+
   const [search, setSearch] = useState("");
 
   const listAuctions = searchParam => {
@@ -82,7 +91,10 @@ const AuctionContextProvider = props => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/" + id;
     fetch(uri, {
       method: "DELETE"
-      }).then(() => console.log(`Auction with id ${id} deleted`));
+      }).then(() => {
+        console.log(`Auction with id ${id} deleted`);
+        updateAllAuctions();
+      });
   };
 
   const copyDetails = inId => {
@@ -117,7 +129,8 @@ const AuctionContextProvider = props => {
         copyDetails,
         setNewBid,
         returnBids,
-        clearForm      
+        clearForm,
+        updateAllAuctions      
       }}
     >
       {props.children}
