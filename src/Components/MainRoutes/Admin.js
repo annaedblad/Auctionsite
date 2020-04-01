@@ -30,41 +30,35 @@ const Admin = (props) => {
     copyDetails(e.target.id);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let title = document.getElementById("title");
-    let description = document.getElementById("description");
-    let end = document.getElementById("end");
-    let price = document.getElementById("price");
-    let creator = document.getElementById("creator");
-
-    let auction = {
-      AuktionID: "0000",
-      Titel: title.value,
-      Beskrivning: description.value,
-      StartDatum: new Date(),
-      SlutDatum: new Date(Date.parse(end.value).toISOString()),
-      Gruppkod: 2220,
-      Utropspris: price.value,
-      SkapadAv: creator.value
-      };
-    createAuction(auction);
-  };
-
   const createNewAuction = () =>{
     let auction = {
       AuktionID: "0000",
       Titel: title,
       Beskrivning: description,
-      StartDatum: new Date(),
+      StartDatum: new Date().toLocaleString(),
       SlutDatum: endDate,
       Gruppkod: 2220,
       Utropspris: price,
       SkapadAv: creator
       };
-
     createAuction(auction);
   };
+
+  const handleUpdate = () =>{
+    let auction = {
+      AuktionID: '0000',
+      Titel: title,
+      Beskrivning: description,
+      StartDatum: new Date().toLocaleString(),
+      SlutDatum: endDate,
+      Gruppkod: 2220,
+      Utropspris: price,
+      SkapadAv: creator
+      };
+    updateAuction(auction);
+  };
+
+
 
   var currentDate = new Date();
 
@@ -112,7 +106,7 @@ const Admin = (props) => {
       <div className="row">
         <div className="col-sm">
           <div className="card" id="left">
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">
                   Title
@@ -210,6 +204,7 @@ const Admin = (props) => {
                     type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
+                    onClick = {handleUpdate}
                     disabled                    
                   >
                     Update

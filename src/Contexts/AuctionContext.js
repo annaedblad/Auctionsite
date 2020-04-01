@@ -60,7 +60,9 @@ const AuctionContextProvider = props => {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json"
       }
-    }).then(() => console.log("Auction Updated"));
+    }).then(() => console.log(
+      "Auction Updated"));
+    updateAllAuctions();
   };
 
   const createAuction = (auction) => {
