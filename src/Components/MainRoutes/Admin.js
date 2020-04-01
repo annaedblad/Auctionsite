@@ -15,7 +15,8 @@ const Admin = () => {
     bids,
     getBids,
     copyDetails,
-    deleteAuction
+    deleteAuction, 
+    returnBids
   } = useContext(AuctionContext);
   
   const handleDelete = e => {
@@ -41,7 +42,6 @@ const Admin = () => {
 
   let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
   
-
   let list = ongoingAuctions.map(auction => {
     return (
       <li
