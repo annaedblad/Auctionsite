@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 const Auctions = () => {
   const { allAuctions, search, updateAllAuctions} = useContext(AuctionContext);
   let { id } = useParams();
-
+  
   useEffect(()=>{
     updateAllAuctions();
   },[id])
