@@ -13,7 +13,8 @@ const Admin = (props) => {
     deleteAuction, 
     returnBids,
     clearForm,
-    createAuction
+    createAuction,
+    hasBids
   } = useContext(AuctionContext);
   
   const[title, setTitle] = useState('');
@@ -58,11 +59,9 @@ const Admin = (props) => {
     updateAuction(auction);
   };
 
-
-
   var currentDate = new Date();
-
-  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
+  
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && on.hasBid === false);
   
   let list = ongoingAuctions.map(auction => {
     return (
