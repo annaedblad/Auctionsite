@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styling/Admin.css";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 
-const Admin = () => {
+const Admin = (props) => {
   //logic needs to be created
   // let list = props.values.filter(allAuctions => {
   //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
@@ -26,6 +26,11 @@ const Admin = () => {
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    createAuction();
+  }
 
   var currentDate = new Date();
 
@@ -73,7 +78,7 @@ const Admin = () => {
       <div className="row">
         <div className="col-sm">
           <div className="card" id="left">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">
                   Title
