@@ -77,13 +77,6 @@ const AuctionContextProvider = props => {
       }).then(() => console.log(`Auction with id ${id} deleted`));
   };
 
-  /*const appendLeadingZeroes = n => {
-    if (n <= 9) {
-      return "0" + n;
-    }
-    return n;
-  }*/
-
   const copyDetails = inId => {
     let id = allAuctions.filter(on => on.AuktionID == inId);
     
@@ -111,7 +104,6 @@ const AuctionContextProvider = props => {
         updateAuction,
         createAuction,
         deleteAuction,
-        //appendLeadingZeroes,
         bids,
         getBids,
         copyDetails,

@@ -11,7 +11,6 @@ const Admin = () => {
   const {
     updateAuction,
     allAuctions,
-    //appendLeadingZeroes,
     bids,
     getBids,
     copyDetails,
@@ -27,19 +26,6 @@ const Admin = () => {
     copyDetails(e.target.id);
   };
   var currentDate = new Date();
-  
-  /*var date =
-  currentDate.getFullYear() +
-    "-" +
-    appendLeadingZeroes(currentDate.getMonth() + 1) +
-    "-" +
-    appendLeadingZeroes(currentDate.getDate()) +
-    "T" +
-    appendLeadingZeroes(currentDate.getHours()) +
-    ":" +
-    appendLeadingZeroes(currentDate.getMinutes()) +
-    ":" +
-    appendLeadingZeroes(currentDate.getSeconds());*/
 
   let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
   
