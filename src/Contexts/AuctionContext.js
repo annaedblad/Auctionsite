@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import Admin from "../Components/MainRoutes/Admin";
 
 export const AuctionContext = createContext();
 
@@ -34,7 +35,7 @@ const AuctionContextProvider = props => {
     return fetchedData;
   }
 
-  const updateAuction = auction => {
+  const updateAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
     fetch(uri, {
       method: "PUT",
@@ -46,8 +47,10 @@ const AuctionContextProvider = props => {
     }).then(() => console.log("Auction Updated"));
   };
 
-  const createAuction = auction => {
+  const createAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+    auction.StartDatum = new Date();
+    auction.Gruppkod = 2200;
     fetch(uri, {
       method: "POST",
       body: JSON.stringify(auction),
