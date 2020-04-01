@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import { AuctionContext } from '../Contexts/AuctionContext';
 
 const Navbar = () => {
@@ -10,7 +10,6 @@ const Navbar = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         listAuctions(auction);
-        setAuctions('');
     }
     return (
         <div className="navbarContainer container">
@@ -32,19 +31,20 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <form  onSubmit={handleSubmit} className="form-inline">
-                    <input className="form-inline form-control mr-sm-2" 
-                        type="search" 
-                        value={auction}
-                        placeholder="Search for auction" 
-                        aria-label="Search" 
-                        onChange={(e) => setAuctions(e.target.value)}
-                    />
-                    <button className="btn btn-outline-info my-2 my-sm-0" 
-                        type="submit">
-                        Search
-                    </button>
-                </form>   
+                <div>
+                    <form onClick={handleSubmit} className="form-inline">
+                        <input className="form-inline form-control mr-sm-2" 
+                            type="search" 
+                            value={auction}
+                            placeholder="Search for auction..." 
+                            aria-label="Search" 
+                            onChange={(e) => setAuctions(e.target.value)}
+                        />
+                        <NavLink to="/all" className="btn btn-outline-info my-2 my-sm-0">
+                            <span > Search </span>            
+                        </NavLink>
+                    </form>  
+                </div>
             </nav>
         </div>
     );
