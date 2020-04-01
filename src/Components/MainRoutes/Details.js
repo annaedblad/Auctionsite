@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
@@ -6,25 +6,41 @@ import Form from 'react-bootstrap/Form'
 import '../../Styling/Details.css';
 import { useParams } from "react-router-dom";
 import { AuctionContext } from "../../Contexts/AuctionContext";
-
+var tempoId = "";
 const Details = () => {
     let { id } = useParams();
     const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
+    const [error, setError] = useState("");
+
+    if (tempoId !== id) {
+        getBids(id);
+        tempoId = id;
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
         let formName = document.getElementById("formName");
         let bidAmount = document.getElementById("formBid");
+        const highestBidd = Math.max(...bids.map(o => o.Summa), 0);
 
-        let fakeBid = {
-            Summa: bidAmount.value,
-            AuktionID: id,
-            Budgivare: formName.value
+        if (bidAmount.value <= highestBidd || bidAmount.value <= specificAuction.Utropspris) {
+            setError("För lågt bud angivet");
         }
 
-        await setNewBid(fakeBid);
-        await getBids(id);
+        else {
+            setError("");
+            let fakeBid = {
+                Summa: bidAmount.value,
+                AuktionID: id,
+                Budgivare: formName.value
+            }
+            bidAmount.value="";
+            formName.value="";
+
+            await setNewBid(fakeBid);
+            await getBids(id);
+        }
     }
 
     if (specificAuction !== undefined && bids !== undefined) {
@@ -38,9 +54,7 @@ const Details = () => {
                 return a.Summa < b.Summa ? 1 : -1;
             });
         let items;
-        if (bids.length == 0) {
-            getBids(id);
-        }
+    
         items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
 
         let listBids = "";
@@ -69,7 +83,6 @@ const Details = () => {
                         <div className="paddingCards">
                             <Row className="leftRow1">{text}</Row>
                             <Row className="leftRow2">{winningBid}</Row>
-                            <Row className="leftRow3">bild på objektet</Row>
                             <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
                         </div>
                     </Col>
@@ -96,6 +109,9 @@ const Details = () => {
                                         <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                 </Button>
+                                <div style={{ fontSize: 15, color: "red" }}>
+                                            {error}
+                                        </div>
                                     </Form>
                                 </Col>
                             </Row>
