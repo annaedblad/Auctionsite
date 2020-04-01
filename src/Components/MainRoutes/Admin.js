@@ -27,10 +27,26 @@ const Admin = (props) => {
     copyDetails(e.target.id);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createAuction();
-  }
+    let title = document.getElementById("title");
+    let description = document.getElementById("description");
+    let end = document.getElementById("end");
+    let price = document.getElementById("price");
+    let creator = document.getElementById("creator");
+
+    let auction = {
+      AuktionID: "0000",
+      Titel: title.value,
+      Beskrivning: description.value,
+      StartDatum: new Date(),
+      SlutDatum: new Date(Date.parse(end.value).toISOString()),
+      Gruppkod: 2220,
+      Utropspris: price.value,
+      SkapadAv: creator.value
+      };
+    createAuction(auction);
+  };
 
   var currentDate = new Date();
 
@@ -171,8 +187,7 @@ const Admin = (props) => {
                     type="submit"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
-                    disabled
-                    onClick = {updateAuction}
+                    disabled                    
                   >
                     Update
                   </button>

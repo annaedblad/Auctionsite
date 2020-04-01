@@ -65,8 +65,6 @@ const AuctionContextProvider = props => {
 
   const createAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
-    auction.StartDatum = new Date();
-    auction.Gruppkod = 2200;
     fetch(uri, {
       method: "POST",
       body: JSON.stringify(auction),
