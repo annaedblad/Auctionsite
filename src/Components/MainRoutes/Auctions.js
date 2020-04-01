@@ -1,11 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AuctionContext} from '../../Contexts/AuctionContext';
 import {useParams} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 
 const Auctions = () => {
-  const { allAuctions, search} = useContext(AuctionContext);
+  const { allAuctions, search, updateAllAuctions} = useContext(AuctionContext);
   let { id } = useParams();
+
+  useEffect(()=>{
+    updateAllAuctions();
+  },[id])
 
   var date = new Date();
   let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > date.getTime());
