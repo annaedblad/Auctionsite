@@ -8,10 +8,13 @@ const AuctionContextProvider = props => {
   useEffect(() => {
     (async () => {
       let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
-      let fetchedData = await fetch(uri).then(res => res.json());
+      let fetchedData = await fetch(uri).then(res => res.json()).then(data => {
+        console.log(data);
+        return data;
+      });
       setAllAuctions(fetchedData);
     })();
-  },[allAuctions]);
+  },[]);
 
   const [search, setSearch] = useState("");
 
@@ -29,7 +32,12 @@ const AuctionContextProvider = props => {
 
   async function returnBids(auctionID) {
     let uri = "http://nackowskis.azurewebsites.net/api/bud/2220/" + auctionID;
-    let fetchedData = await fetch(uri).then(res => res.json());
+    let fetchedData = await fetch(uri)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      return data;
+    });
     return fetchedData;
   }
 
