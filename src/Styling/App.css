@@ -9,3 +9,6 @@
 .link:hover {
     color:rgb(0, 196, 0);
 }
+#jumbotronHeader {
+    font-family: 'Comic Neue', cursive;
+}

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {NavLink, Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import { AuctionContext } from '../Contexts/AuctionContext';
 
 const Navbar = () => {
