@@ -77,23 +77,30 @@ const AuctionContextProvider = props => {
       }).then(() => console.log(`Auction with id ${id} deleted`));
   };
 
-  const appendLeadingZeroes = n => {
+  /*const appendLeadingZeroes = n => {
     if (n <= 9) {
       return "0" + n;
     }
     return n;
+  }*/
+
+  const copyDetails = inId => {
+    let id = allAuctions.filter(on => on.AuktionID == inId);
+    
+    document.getElementById("name").value = id[0].Titel;
+    document.getElementById("description").value = id[0].Beskrivning;
+    document.getElementById("price").value = id[0].Utropspris + ' kr';
+    document.getElementById("start").value = new Date(Date.parse(id[0].StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','');
+    document.getElementById("end").value = id[0].SlutDatum;
+    document.getElementById("creator").value = id[0].SkapadAv;  
+    document.getElementById("update").removeAttribute("disabled");
+    document.getElementById("addNew").setAttribute("disabled", true);    
   }
 
-  const copyDetails = (auction) => {
-
-    // var title = document.getElementById("name").value = auction.Titel;
-    // var description = document.getElementById("description").value = auction.Beskrivning;
-    // var price = document.getElementById("price").value = auction.Pris;
-    // var start = document.getElementById("start").value = auction.StartDatum;
-    // var end = document.getElementById("end").value = auction.SlutDatum;
-
-  }
-  
+  const clearForm = () =>{
+    document.getElementById("addNew").removeAttribute("disabled");
+    document.getElementById("update").setAttribute("disabled", true);
+  }  
 
   return (
     <AuctionContext.Provider
@@ -104,12 +111,13 @@ const AuctionContextProvider = props => {
         updateAuction,
         createAuction,
         deleteAuction,
-        appendLeadingZeroes,
+        //appendLeadingZeroes,
         bids,
         getBids,
         copyDetails,
         setNewBid,
-        returnBids        
+        returnBids,
+        clearForm      
       }}
     >
       {props.children}

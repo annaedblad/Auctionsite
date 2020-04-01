@@ -44,17 +44,19 @@ const Details = () => {
         items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
 
         let listBids = "";
-        let openOrNot = "";
-        let winningBid = "";
         let currentDate = new Date();
-        if (currentDate.getTime() < Date.parse(specificAuction.SlutDatum)) {
-            openOrNot = "Auktionen är öppen";
+        let isOpen = currentDate.getTime() < Date.parse(specificAuction.SlutDatum);
+        let text = "";
+        let winningBid = "";
+        
+        if (isOpen == true) {
+            text = "Auktionen är öppen";
             listBids = items;
             winningBid = "Vinnarbud ej klart";
 
         }
         else {
-            openOrNot = "Auktionen är stängd";
+            text = "Auktionen är stängd";
             winningBid = "Vinnande bud: " + highestBid + " kr";
             listBids = "Budhistorik ej tillgänglig vid avslutad auktion";
         }
@@ -65,7 +67,7 @@ const Details = () => {
                 <Row>
                     <Col md={6} className="card" id="leftCard">
                         <div className="paddingCards">
-                            <Row className="leftRow1">{openOrNot}</Row>
+                            <Row className="leftRow1">{text}</Row>
                             <Row className="leftRow2">{winningBid}</Row>
                             <Row className="leftRow3">bild på objektet</Row>
                             <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
@@ -86,12 +88,12 @@ const Details = () => {
                                 <Col md={12}>
                                     <Form className="test" onSubmit={handleSubmit}>
                                         <Form.Group controlId="formName">
-                                            <Form.Control type="text" name="formName" placeholder="Ange namn" />
+                                            <Form.Control type="text" name="formName" placeholder="Ange namn" disabled={!isOpen} />
                                         </Form.Group>
                                         <Form.Group controlId="formBid">
-                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" />
+                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" disabled={!isOpen} />
                                         </Form.Group>
-                                        <Button variant="outline-dark" type="submit">
+                                        <Button id="bidButton" className="btn btn-secondary btn-lg disabled" variant="outline-dark" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                 </Button>
                                     </Form>
