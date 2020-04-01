@@ -16,7 +16,8 @@ const Admin = () => {
     getBids,
     copyDetails,
     deleteAuction, 
-    returnBids
+    returnBids,
+    clearForm
   } = useContext(AuctionContext);
   
   const handleDelete = e => {
@@ -173,16 +174,27 @@ const Admin = () => {
               </div>
               <div className="form-group row">
                 <div className="col-sm-11">
+                <button
+                    type="submit"
+                    className="btn btn-outline-info my-2 my-sm-0 float-right"
+                    id = "update"
+                    disabled
+                  >
+                    Update
+                  </button>
                   <button
                     type="submit"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
+                    id = "addNew"
                   >
-                    Add new / Update
+                    Add new
                   </button>{" "}
                   {/*needs to be toggable or 2 buttons*/}
                   <button
                     type="reset"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
+                    onClick = {clearForm}
+                    
                   >
                     Clear Form
                   </button>
