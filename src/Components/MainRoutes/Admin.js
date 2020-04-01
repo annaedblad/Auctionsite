@@ -27,7 +27,7 @@ const Admin = (props) => {
     copyDetails(e.target.id);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     createAuction();
   }
@@ -72,7 +72,7 @@ const Admin = (props) => {
 
   return (
     <div className="card" id="container">
-      <blockquote class="blockquote text-center">
+      <blockquote className="blockquote text-center">
         <h3>Admin Menu</h3>
       </blockquote>
       <div className="row">
@@ -80,7 +80,7 @@ const Admin = (props) => {
           <div className="card" id="left">
             <form onSubmit={handleSubmit}>
               <div className="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Title
                 </label>
                 <div className="col-sm-9">
@@ -97,8 +97,7 @@ const Admin = (props) => {
                 </div>
               </div>
               <div className="form-group row">
-                <label
-                  for="inputDescription"
+                <label                  
                   className="col-sm-2 col-form-label"
                 >
                   Description
@@ -111,12 +110,12 @@ const Admin = (props) => {
                     required
                     maxLength="1000"
                     minLength="20"
-                    placeHolder="max 1000 signs"
+                    placeholder="max 1000 signs"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputPrice" className="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Price
                 </label>
                 <div className="col-sm-9">
@@ -135,13 +134,13 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="start"
-                    placeholder="Starts when you click on 'Add new"
+                    placeholder="Starts when you click on 'Add new'"
                     disabled
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputeEnd" className="col-2 col-form-label">
+                <label className="col-2 col-form-label">
                   Expiration
                 </label>
                 <div className="col-9">
@@ -154,7 +153,7 @@ const Admin = (props) => {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Creator
                 </label>
                 <div className="col-sm-9">
@@ -202,7 +201,7 @@ const Admin = (props) => {
         <div className="col-sm">
           <div className="row">
             <div className="col-12">
-              <div class="card" id="right">
+              <div className="card" id="right">
                 <ul className="list-group overflow-auto">
                   {/* just for testing, will be populated via mapping */}
 
