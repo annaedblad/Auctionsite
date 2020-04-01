@@ -23,8 +23,8 @@ const Auctions = () => {
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
                     <p className="card-text text-center">{auction.Beskrivning}</p>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Start: {auction.StartDatum}</li>
-                        <li className="list-group-item">Slut: {auction.SlutDatum}</li>
+                        <li className="list-group-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                        <li className="list-group-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
                         <li className="list-group-item">Utropspris: {auction.Utropspris} kr</li>
                         <li className="list-group-item">Nuvarande pris: xx kr</li>
                     </ul>
@@ -58,8 +58,8 @@ const Auctions = () => {
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
                     <p className="card-text text-center">{auction.Beskrivning}</p>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Start: {auction.StartDatum}</li>
-                        <li className="list-group-item">Slut: {auction.SlutDatum}</li>
+                        <li className="list-group-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                        <li className="list-group-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
                         <li className="list-group-item">Utropspris: {auction.Utropspris} kr</li>
                         <li className="list-group-item">Nuvarande pris: xx kr</li>
                     </ul>

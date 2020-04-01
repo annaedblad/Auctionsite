@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import Admin from "../Components/MainRoutes/Admin";
 
 export const AuctionContext = createContext();
 
@@ -15,6 +16,15 @@ const AuctionContextProvider = props => {
       setAllAuctions(fetchedData);
     })();
   },[]);
+
+  const updateAllAuctions = async () =>{
+    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+      let fetchedData = await fetch(uri).then(res => res.json()).then(data => {
+        console.log(data);
+        return data;
+      });
+      setAllAuctions(fetchedData);
+  }
 
   const [search, setSearch] = useState("");
 
@@ -41,7 +51,7 @@ const AuctionContextProvider = props => {
     return fetchedData;
   }
 
-  const updateAuction = auction => {
+  const updateAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
     fetch(uri, {
       method: "PUT",
@@ -53,8 +63,10 @@ const AuctionContextProvider = props => {
     }).then(() => console.log("Auction Updated"));
   };
 
-  const createAuction = auction => {
+  const createAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+    auction.StartDatum = new Date();
+    auction.Gruppkod = 2200;
     fetch(uri, {
       method: "POST",
       body: JSON.stringify(auction),
@@ -81,7 +93,10 @@ const AuctionContextProvider = props => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/" + id;
     fetch(uri, {
       method: "DELETE"
-      }).then(() => console.log(`Auction with id ${id} deleted`));
+      }).then(() => {
+        console.log(`Auction with id ${id} deleted`);
+        updateAllAuctions();
+      });
   };
 
   const copyDetails = inId => {
@@ -116,7 +131,8 @@ const AuctionContextProvider = props => {
         copyDetails,
         setNewBid,
         returnBids,
-        clearForm      
+        clearForm,
+        updateAllAuctions      
       }}
     >
       {props.children}

@@ -16,7 +16,8 @@ const Admin = () => {
     copyDetails,
     deleteAuction, 
     returnBids,
-    clearForm
+    clearForm,
+    createAuction
   } = useContext(AuctionContext);
   
   const handleDelete = e => {
@@ -25,6 +26,7 @@ const Admin = () => {
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
   };
+
   var currentDate = new Date();
 
   let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
@@ -71,7 +73,7 @@ const Admin = () => {
       <div className="row">
         <div className="col-sm">
           <div className="card" id="left">
-            <form onSubmit={"some kind of logic"}>
+            <form>
               <div className="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">
                   Title
@@ -84,7 +86,8 @@ const Admin = () => {
                     required
                     maxLength="50"
                     minLength="5"
-                    placeholder="max 50 signs"                    
+                    placeholder="max 50 signs"    
+                                   
                   />
                 </div>
               </div>
@@ -165,13 +168,15 @@ const Admin = () => {
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
                     disabled
+                    onClick = {updateAuction}
                   >
                     Update
                   </button>
                   <button
-                    type="submit"
+                    type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "addNew"
+                    onClick = {createAuction}
                   >
                     Add new
                   </button>{" "}
