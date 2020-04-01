@@ -7,10 +7,9 @@ const Navbar = () => {
     const { listAuctions } = useContext(AuctionContext);
     const[ auction, setAuctions] = useState('');
 
-    const handleChange = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         listAuctions(auction);
-        setAuctions('');
     }
     return (
         <div className="navbarContainer container">
@@ -33,16 +32,18 @@ const Navbar = () => {
                     </li>
                 </ul>
                 <div>
-                    <input className="form-inline form-control mr-sm-2" 
-                        type="search" 
-                        value={auction}
-                        placeholder="Search for auction..." 
-                        aria-label="Search" 
-                        onChange={(e) => setAuctions(e.target.value)}
-                    />
-                    <NavLink to="/all" className="btn btn-outline-info my-2 my-sm-0">
-                            <span onClick={handleChange} > Search </span>            
-                    </NavLink>
+                    <form onClick={handleSubmit} className="form-inline">
+                        <input className="form-inline form-control mr-sm-2" 
+                            type="search" 
+                            value={auction}
+                            placeholder="Search for auction..." 
+                            aria-label="Search" 
+                            onChange={(e) => setAuctions(e.target.value)}
+                        />
+                        <NavLink to="/all" className="btn btn-outline-info my-2 my-sm-0">
+                            <span > Search </span>            
+                        </NavLink>
+                    </form>  
                 </div>
             </nav>
         </div>
