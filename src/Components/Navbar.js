@@ -32,19 +32,21 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <form  onSubmit={handleSubmit} className="form-inline">
-                    <input className="form-inline form-control mr-sm-2" 
-                        type="search" 
-                        value={auction}
-                        placeholder="Search for auction" 
-                        aria-label="Search" 
-                        onChange={(e) => setAuctions(e.target.value)}
-                    />
-                    <button className="btn btn-outline-info my-2 my-sm-0" 
-                        type="submit">
-                        Search
-                    </button>
-                </form>   
+                <div>
+                    <form  onSubmit={handleSubmit} className="form-inline">
+                    <NavLink to="all" className="btn btn-outline-info my-2 my-sm-0" type="submit">
+
+                        <input className="form-inline form-control mr-sm-2" 
+                            type="search" 
+                            value={auction}
+                            placeholder="Search for auction..." 
+                            aria-label="Search" 
+                            onChange={(e) => setAuctions(e.target.value)}
+                        />
+                            Search              
+                        </NavLink>
+                    </form>  
+                </div>
             </nav>
         </div>
     );

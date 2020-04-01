@@ -12,7 +12,7 @@ const Auctions = () => {
 
   if (id === "all") {
     let actualAuctions = allAuctions
-        .filter(auction => auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search)
+        .filter(auction => auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search )
         .map(auction => {
         return(
         <div className="col-sm-4" key={auction.AuktionID}>
@@ -47,7 +47,7 @@ const Auctions = () => {
   else if (id === "historic") {
 
     let historicAuctions = allAuctions.filter(auction => 
-      auction.SlutDatum < date && (auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search))
+      Date.parse(auction.SlutDatum) < date.getTime() && (auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search))
     .map(auction => {
       return (
         <div className="col-sm-4" key={auction.AuktionID}>
@@ -86,8 +86,9 @@ const Auctions = () => {
  
   } else {
 
-    let actualAuctions = allAuctions
-        .filter(on => Date.parse(on.SlutDatum) > date.getTime())
+    let actualAuctions = ongoingAuctions
+        .filter(auction => auction.Titel.toLowerCase().includes(search.toLowerCase()) || !search)
+        // .filter(on => Date.parse(on.SlutDatum) > date.getTime())
         .map(auction => {
         return(
         <div className="col-sm-4" key={auction.AuktionID}>
