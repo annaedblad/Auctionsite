@@ -17,8 +17,7 @@ const AuctionContextProvider = props => {
 
   const listAuctions = searchParam => {
     setSearch(searchParam);
-
-    console.log("It went thisss farrr");
+    console.log({searchParam})
   };
   const [bids, setBids] = useState([]);
 

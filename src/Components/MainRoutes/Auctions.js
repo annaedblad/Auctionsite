@@ -37,7 +37,7 @@ const Auctions = () => {
     })
     return (
         <div className="auctionContainer container">
-          <h1 className="text-center">Actual Auctions page</h1>
+          <h1 className="text-center">All Auctions available here</h1>
           <div className="row justify-content-center">
             {actualAuctions}
           </div>
