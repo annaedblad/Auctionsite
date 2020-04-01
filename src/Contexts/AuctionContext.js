@@ -72,7 +72,10 @@ const AuctionContextProvider = props => {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json"
       }
-    }).then(() => console.log("Auction Created"));
+    }).then(() => {
+      console.log("Auction Created");
+      updateAllAuctions();
+    });
   };
 
   async function setNewBid (bid) {

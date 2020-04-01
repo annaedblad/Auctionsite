@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styling/Admin.css";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 
 const Admin = (props) => {
-  //logic needs to be created
-  // let list = props.values.filter(allAuctions => {
-  //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
-  // });
   const {
     updateAuction,
     allAuctions,
@@ -20,6 +16,13 @@ const Admin = (props) => {
     createAuction
   } = useContext(AuctionContext);
   
+  const[title, setTitle] = useState('');
+  const[description, setDescription] = useState('');
+  const[startDate, setStartDate] = useState('');
+  const[endDate, setEndDate] = useState('');
+  const[price, setPrice] = useState('');
+  const[creator, setCreator] = useState('');
+
   const handleDelete = e => {
     deleteAuction(e.target.id);
   };
@@ -45,6 +48,21 @@ const Admin = (props) => {
       Utropspris: price.value,
       SkapadAv: creator.value
       };
+    createAuction(auction);
+  };
+
+  const createNewAuction = () =>{
+    let auction = {
+      AuktionID: "0000",
+      Titel: title,
+      Beskrivning: description,
+      StartDatum: new Date(),
+      SlutDatum: endDate,
+      Gruppkod: 2220,
+      Utropspris: price,
+      SkapadAv: creator
+      };
+
     createAuction(auction);
   };
 
@@ -108,7 +126,7 @@ const Admin = (props) => {
                     maxLength="50"
                     minLength="5"
                     placeholder="max 50 signs"    
-                                   
+                    onChange={(e) => setTitle(e.target.value)}              
                   />
                 </div>
               </div>
@@ -127,6 +145,7 @@ const Admin = (props) => {
                     maxLength="1000"
                     minLength="20"
                     placeholder="max 1000 signs"
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
               </div>
@@ -139,6 +158,7 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="price"
+                    onChange={(e) => setPrice(e.target.value)}
                     required
                   />
                 </div>
@@ -151,6 +171,7 @@ const Admin = (props) => {
                     className="form-control"
                     id="start"
                     placeholder="Starts when you click on 'Add new'"
+                    onChange={(e) => setStartDate(e.target.value)}
                     disabled
                   />
                 </div>
@@ -164,6 +185,7 @@ const Admin = (props) => {
                     className="form-control"
                     type="datetime-local"
                     id="end"
+                    onChange={(e) => setEndDate(e.target.value)}
                     required
                   />
                 </div>
@@ -177,6 +199,7 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="creator"
+                    onChange={(e) => setCreator(e.target.value)}
                     required                                        
                   />
                 </div>
@@ -184,7 +207,7 @@ const Admin = (props) => {
               <div className="form-group row">
                 <div className="col-sm-11">
                 <button
-                    type="submit"
+                    type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
                     disabled                    
@@ -195,7 +218,7 @@ const Admin = (props) => {
                     type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "addNew"
-                    onClick = {createAuction}
+                    onClick = {createNewAuction}
                   >
                     Add new
                   </button>{" "}
