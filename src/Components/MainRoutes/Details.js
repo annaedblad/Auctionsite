@@ -14,6 +14,7 @@ const Details = () => {
     const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
     const [error, setError] = useState("");
+    console.log(specificAuction);
 
     if (tempoId !== id) {
         getBids(id);
@@ -26,7 +27,7 @@ const Details = () => {
         let bidAmount = document.getElementById("formBid");
         const highestBidd = Math.max(...bids.map(o => o.Summa), 0);
 
-        if (bidAmount.value <= highestBidd || bidAmount.value <= specificAuction.Utropspris) {
+        if (bidAmount.value <= highestBidd || bidAmount.value < specificAuction.Utropspris) {
             setError("För lågt bud angivet");
         }
         else {
@@ -86,8 +87,12 @@ const Details = () => {
                     <Col md={6} className="card" id="leftCard">
                         <div className="paddingCards">
                             <Row className="leftRow1">{text}</Row>
+                            <label>Försäljare</label>
+                            <Row className="leftRow1">{specificAuction.SkapadAv}</Row>
                             <Row className="leftRow2">{winningBid}</Row>
+                            <label>Beskrivning</label>
                             <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
+                          
                         </div>
                     </Col>
                     <Col md={1} className="h"></Col>
