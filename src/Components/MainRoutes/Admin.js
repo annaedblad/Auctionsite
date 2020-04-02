@@ -162,7 +162,7 @@ const Admin = (props) => {
                 </label>
                 <div className="col-sm-9">
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     id="price"
                     onChange={(e) => setPrice(e.target.value)}
