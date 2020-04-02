@@ -25,9 +25,7 @@ const Admin = () => {
   const[creator, setCreator] = useState('');
   const[code, setCode] = useState('');
 
-  const handleDelete = e => {
-    reset();
-    deleteAuction(e.target.id);
+  const resetState = () =>{
     setAuctionId('');
     setTitle('');
     setDescription('');
@@ -36,8 +34,12 @@ const Admin = () => {
     setPrice('');
     setCreator('');
     setCode('');
-    
+  };
 
+  const handleDelete = e => {
+    reset();
+    deleteAuction(e.target.id);
+    resetState();
   };
   const handleCopyDetails = e => {
     reset();
@@ -69,28 +71,14 @@ const Admin = () => {
       };       
     createAuction(auction);
     reset();
-    setAuctionId('');
-    setTitle('');
-    setDescription('');
-    setStartDate('');
-    setEndDate('');
-    setPrice('');
-    setCreator('');
-    setCode('');
+    resetState();
   };
 
   const handleClearForm = () =>{
     clearForm();
     reset();
-    setAuctionId('');
-    setTitle('');
-    setDescription('');
-    setStartDate('');
-    setEndDate('');
-    setPrice('');
-    setCreator('');
-    setCode('');
-  }
+    resetState();
+  };
 
   const handleUpdate = () =>{
     let auction = {
@@ -104,21 +92,12 @@ const Admin = () => {
       SkapadAv: creator
       };
     updateAuction(auction);
-    setAuctionId('');
-    setTitle('');
-    setDescription('');
-    setStartDate('');
-    setEndDate('');
-    setPrice('');
-    setCreator('');
-    setCode('');
+    resetState();
     reset();
   };
 
-  var currentDate = new Date();
-  
-  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && on.hasBid === false);
-  
+  var currentDate = new Date();  
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && on.hasBid === false);  
   let list = ongoingAuctions.map(auction => {
     return (
       <li
@@ -264,8 +243,7 @@ const Admin = () => {
                     ref={
                       register({
                         required: true
-                      })
-                    }                                        
+                      })}                                        
                   />
                   {errors.exampleRequired5 && <span className = "errorMessage">This field is required</span>}
                 </div>
@@ -288,8 +266,7 @@ const Admin = () => {
                     onClick = {handleSubmit(createNewAuction)}
                   >
                     Add new
-                  </button>{" "}
-                  {/*needs to be toggable or 2 buttons*/}
+                  </button>{" "}                  
                   <button
                     type="reset"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
@@ -308,8 +285,6 @@ const Admin = () => {
             <div className="col-12">
               <div className="card" id="right">
                 <ul className="list-group overflow-auto">
-                  {/* just for testing, will be populated via mapping */}
-
                   {list}
                 </ul>
               </div>
