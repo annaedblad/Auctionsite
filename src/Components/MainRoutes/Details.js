@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
@@ -115,9 +114,9 @@ const Details = () => {
                                         <Form.Group controlId="formBid">
                                             <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
                                         </Form.Group>
-                                        <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+                                        <button id="bidButton" className="btn btn-outline-info my-2 my-sm-0" type="submit" disabled={!isOpen}>
                                             Lägg bud
-                                </Button>
+                                </button>
                                         <div className="errorMessage">{error}</div>
                                     </Form>
                                 </Col>
