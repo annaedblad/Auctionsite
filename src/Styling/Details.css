@@ -11,8 +11,8 @@
         margin-bottom: 30px;
     }
 
-    .test {
-        
+    #auctionTitle {
+        font-family: 'Indie Flower', cursive;
     }
 
     #bud{
@@ -20,7 +20,7 @@
         overflow-y: scroll;
         margin: auto;
         background-color: beige;
-        margin-left: 50px;
+        max-width: 100%;
     }
     .leftRow1{
         height:50px;
@@ -48,7 +48,6 @@
 
     .paddingCards {
         padding: 25px;
-        background-color:
     }
 
     button[disabled=disabled], button:disabled {

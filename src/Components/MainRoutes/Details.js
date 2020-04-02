@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form'
+import { Row, Col, Button, Form} from 'react-bootstrap';
+// import { Form } from 'react-bootstrap/Form';
 import '../../Styling/Details.css';
 import { useParams } from "react-router-dom";
 import { AuctionContext } from "../../Contexts/AuctionContext";
@@ -13,7 +12,6 @@ const Details = () => {
     const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
     const [error, setError] = useState("");
-    // console.log(specificAuction);
 
     if (tempoId !== id) {
         getBids(id);
@@ -67,7 +65,7 @@ const Details = () => {
         var endDateString = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)  + " " +
         ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
 
-        if (isOpen == true) {
+        if (isOpen === true) {
             text = "Auktionen är öppen";
             listBids = items;
             winningBid = "Vinnarbud ej klart";
@@ -81,7 +79,7 @@ const Details = () => {
 
     return (
         <div className="container">
-           <h3 className="text-center">{specificAuction.Titel}</h3>
+           <h3 className="text-center" id="auctionTitle">Auction Object : {specificAuction.Titel}</h3>
 
             <div className="row">
                 {/* Här börjar Left Container */}
@@ -128,7 +126,7 @@ const Details = () => {
                         </Col>
                         <Row>
                             <Col md={12} className="ml-4"> <h5>Lista på bud</h5></Col>
-                            <Col md={12} className="text-center" id="bud"> 
+                            <Col md={10} className="text-center" id="bud"> 
                                 <div>
                                     {listBids}
                                 </div>
@@ -136,20 +134,20 @@ const Details = () => {
                         </Row>
                         <Row>
                             <div className="container justify-content-center">
-                            <Col md={12} className="m-3 ml-5">
-                                <Form className="test" onSubmit={handleSubmit}>
-                                    <Form.Group controlId="formName">
-                                        <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
-                                    </Form.Group>
-                                    <Form.Group controlId="formBid">
-                                        <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
-                                    </Form.Group>
-                                    <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
-                                        Lägg bud
-                                    </Button>
-                                    <div className="errorMessage">{error}</div>
-                                </Form>
-                            </Col>
+                                <Col md={12} className="m-3 ml-5">
+                                    <Form className="test" onSubmit={handleSubmit}>
+                                        <Form.Group controlId="formName">
+                                            <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
+                                        </Form.Group>
+                                        <Form.Group controlId="formBid">
+                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
+                                        </Form.Group>
+                                        <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+                                            Lägg bud
+                                        </Button>
+                                        <div className="errorMessage">{error}</div>
+                                    </Form>
+                                </Col>
                             </div>
                         </Row>
 
@@ -160,65 +158,65 @@ const Details = () => {
                 </div>
             </div>
         </div>
+    
+    // <div className="container-fluid">
+    //     <div className="card" id="container">
+    //         <h1 className="text-center">{specificAuction.Titel}</h1>
+    //             <Row className="text-center">
+    //                 <Col md={6} className="card" id="leftCard">
+    //                     <div className="alert alert-dark"> 
+    //                         <span className="lead font-weight-bold">{text}</span>
+    //                     </div>
+    //                 <Col><label className="lead text-center">Försäljare</label></Col>
 
-
-        // <div className="container-fluid">
-        // <div className="card" id="container">
-        //     <h1 className="text-center">{specificAuction.Titel}</h1>
-        //         <Row className="text-center">
-        //             <Col md={6} className="card" id="leftCard">
-        //                 <div className="alert alert-dark"> 
-        //                     <span className="lead font-weight-bold">{text}</span>
-        //                 </div>
-        //             <Col><label className="lead text-center">Försäljare</label></Col>
-
-        //                 <Col className="leftRow1">{specificAuction.SkapadAv}</Col>
-        //                 <Row className="leftRow2">{winningBid}</Row>
-        //                     <label className="lead">Beskrivning</label>
-        //                 <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
+    //                     <Col className="leftRow1">{specificAuction.SkapadAv}</Col>
+    //                     <Row className="leftRow2">{winningBid}</Row>
+    //                         <label className="lead">Beskrivning</label>
+    //                     <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
                           
                         
-        //             </Col>
-        //             <Col md={1} className="h"></Col>
+    //                 </Col>
+    //                 <Col md={1} className="h"></Col>
 
-        //             <Col md={4} className="rightContainer card" id="rightCard">
-        //                 <div className="paddingCards">
-        //                     <Row>
-        //                         <Col md={12} id="utropsPris">Slutdatum: {endDateString} <br></br> 
-        //                         Utropspris: {specificAuction.Utropspris} kr <br></br> 
-        //                         Antal bud: {items.length}</Col>
-        //                     </Row>
-        //                     <Row>
-        //                         <Col md={8} id="bud"> Lista på bud: {listBids}
-        //                         </Col>
+    //                 <Col md={4} className="rightContainer card" id="rightCard">
+    //                     <div className="paddingCards">
+    //                         <Row>
+    //                             <Col md={12} id="utropsPris">Slutdatum: {endDateString} <br></br> 
+    //                             Utropspris: {specificAuction.Utropspris} kr <br></br> 
+    //                             Antal bud: {items.length}</Col>
+    //                         </Row>
+    //                         <Row>
+    //                             <Col md={8} id="bud"> Lista på bud: {listBids}
+    //                             </Col>
 
-        //                     </Row>
-        //                     <Row>
-        //                         <Col md={12}>
-        //                             <Form className="test" onSubmit={handleSubmit}>
-        //                                 <Form.Group controlId="formName">
-        //                                     <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
-        //                                 </Form.Group>
-        //                                 <Form.Group controlId="formBid">
-        //                                     <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
-        //                                 </Form.Group>
-        //                                 <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
-        //                                     Lägg bud
-        //                         </Button>
-        //                                 <div className="errorMessage">{error}</div>
-        //                             </Form>
-        //                         </Col>
-        //                     </Row>
-        //                 </div>
-        //             </Col>
-        //         </Row>
-        //     </div>
-        // </div>
-        );
+    //                         </Row>
+    //                         <Row>
+    //                             <Col md={12}>
+    //                                 <Form className="test" onSubmit={handleSubmit}>
+    //                                     <Form.Group controlId="formName">
+    //                                         <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
+    //                                     </Form.Group>
+    //                                     <Form.Group controlId="formBid">
+    //                                         <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
+    //                                     </Form.Group>
+    //                                     <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+    //                                         Lägg bud
+    //                                  </Button>
+    //                                     <div className="errorMessage">{error}</div>
+    //                                 </Form>
+    //                             </Col>
+    //                         </Row>
+    //                     </div>
+    //                 </Col>
+    //             </Row>
+    //         </div>
+    //     </div>
+        ); 
     }
     else {
         getBids(id);
         return null;
+
     }
 }
 export default Details;
