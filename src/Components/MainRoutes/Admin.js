@@ -8,14 +8,10 @@ const Admin = () => {
   const {
     updateAuction,
     allAuctions,
-    bids,
-    getBids,
     copyDetails,
-    deleteAuction, 
-    returnBids,
+    deleteAuction,
     clearForm,
     createAuction,
-    hasBids
   } = useContext(AuctionContext);
 
   const { register, handleSubmit, errors } = useForm();
@@ -138,19 +134,6 @@ const Admin = () => {
       </li>
     );
   });
-
-  // let fakeAuctionUpdate = {
-  //   AuktionID: 4676,
-  //   Titel: "Antik testlampa 2",
-  //   Beskrivning: "Uppdaterad via kod",
-  //   StartDatum: "2020-03-26T00:00:00",
-  //   SlutDatum: "2020-03-31T00:00:00",
-  //   Gruppkod: 2220,
-  //   Utropspris: 20000,
-  //   SkapadAv: "Richard"
-  // };
-
-  // updateAuction(fakeAuctionUpdate);
 
   return (
     <div className="card" id="container">
