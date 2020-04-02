@@ -14,7 +14,7 @@ const Admin = () => {
     createAuction,
   } = useContext(AuctionContext);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
   
   const[auctionId, setAuctionId] = useState('');
   const[title, setTitle] = useState('');
@@ -26,6 +26,7 @@ const Admin = () => {
   const[code, setCode] = useState('');
 
   const handleDelete = e => {
+    reset();
     deleteAuction(e.target.id);
     setAuctionId('');
     setTitle('');
@@ -35,9 +36,11 @@ const Admin = () => {
     setPrice('');
     setCreator('');
     setCode('');
+    
 
   };
   const handleCopyDetails = e => {
+    reset();
     copyDetails(e.target.id);
     
     let auc = allAuctions.filter(on => on.AuktionID == e.target.id);
@@ -49,7 +52,7 @@ const Admin = () => {
     setPrice(auc[0].Utropspris);
     setCreator(auc[0].SkapadAv);
     setCode(auc[0].Gruppkod);
-
+    
     console.log(auc);
   };
 
@@ -63,8 +66,9 @@ const Admin = () => {
       Gruppkod: 2220,
       Utropspris: price,
       SkapadAv: creator
-      };
-    createAuction(auction);    
+      };       
+    createAuction(auction);
+    reset();
     setAuctionId('');
     setTitle('');
     setDescription('');
@@ -77,6 +81,7 @@ const Admin = () => {
 
   const handleClearForm = () =>{
     clearForm();
+    reset();
     setAuctionId('');
     setTitle('');
     setDescription('');
@@ -107,7 +112,7 @@ const Admin = () => {
     setPrice('');
     setCreator('');
     setCode('');
-
+    reset();
   };
 
   var currentDate = new Date();
