@@ -116,7 +116,7 @@ const Details = () => {
                                         </Form.Group>
                                         <button id="bidButton" className="btn btn-outline-info my-2 my-sm-0" type="submit" disabled={!isOpen}>
                                             Lägg bud
-                                </button>
+                                        </button>
                                         <div className="errorMessage">{error}</div>
                                     </Form>
                                 </Col>
