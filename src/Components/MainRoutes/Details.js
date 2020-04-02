@@ -63,6 +63,9 @@ const Details = () => {
         let isOpen = currentDate.getTime() < Date.parse(specificAuction.SlutDatum);
         let text = "";
         let winningBid = "";
+        var d = new Date(specificAuction.SlutDatum);
+        var endDateString = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)  + " " +
+        ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
 
         if (isOpen == true) {
             text = "Auktionen är öppen";
@@ -91,7 +94,7 @@ const Details = () => {
                     <Col md={4} className="rightContainer card" id="rightCard">
                         <div className="paddingCards">
                             <Row>
-                                <Col md={12} id="utropsPris">Slutdatum: {specificAuction.SlutDatum.substring(0, 10)} <br></br> Utropspris: {specificAuction.Utropspris} <br></br> Antal bud: {items.length}</Col>
+                                <Col md={12} id="utropsPris">Slutdatum: {endDateString} <br></br> Utropspris: {specificAuction.Utropspris} <br></br> Antal bud: {items.length}</Col>
                             </Row>
                             <Row>
                                 <Col md={8} id="bud"> Lista på bud: {listBids}
