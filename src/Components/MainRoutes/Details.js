@@ -113,7 +113,7 @@ const Details = () => {
                                             <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
                                         </Form.Group>
                                         <Form.Group controlId="formBid">
-                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
+                                            <Form.Control  type="number" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
                                         </Form.Group>
                                         <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
                                             Lägg bud
