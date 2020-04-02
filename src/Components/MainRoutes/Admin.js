@@ -66,7 +66,7 @@ const Admin = (props) => {
       Beskrivning: description,
       StartDatum: startDate,
       SlutDatum: endDate,
-      Gruppkod: 2200,
+      Gruppkod: code,
       Utropspris: price,
       SkapadAv: creator
       };
