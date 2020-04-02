@@ -14,7 +14,7 @@ const Details = () => {
     const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
     const [error, setError] = useState("");
-    console.log(specificAuction);
+    // console.log(specificAuction);
 
     if (tempoId !== id) {
         getBids(id);
@@ -80,52 +80,141 @@ const Details = () => {
             listBids = "Budhistorik ej tillgänglig vid avslutad auktion";
         }
 
-        return (
-            <div className="card" id="container">
-                <h1>{specificAuction.Titel}</h1>
-                <Row>
-                    <Col md={6} className="card" id="leftCard">
-                        <div className="paddingCards">
-                            <Row className="leftRow1">{text}</Row>
-                            <label>Försäljare</label>
-                            <Row className="leftRow1">{specificAuction.SkapadAv}</Row>
-                            <Row className="leftRow2">{winningBid}</Row>
-                            <label>Beskrivning</label>
-                            <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
-                          
-                        </div>
-                    </Col>
-                    <Col md={1} className="h"></Col>
-                    <Col md={4} className="rightContainer card" id="rightCard">
-                        <div className="paddingCards">
-                            <Row>
-                                <Col md={12} id="utropsPris">Slutdatum: {endDateString} <br></br> Utropspris: {specificAuction.Utropspris} <br></br> Antal bud: {items.length}</Col>
-                            </Row>
-                            <Row>
-                                <Col md={8} id="bud"> Lista på bud: {listBids}
-                                </Col>
+    return (
+        <div className="container">
+           <h3 className="text-center">{specificAuction.Titel}</h3>
 
-                            </Row>
-                            <Row>
-                                <Col md={12}>
-                                    <Form className="test" onSubmit={handleSubmit}>
-                                        <Form.Group controlId="formName">
-                                            <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
-                                        </Form.Group>
-                                        <Form.Group controlId="formBid">
-                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
-                                        </Form.Group>
-                                        <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
-                                            Lägg bud
-                                </Button>
-                                        <div className="errorMessage">{error}</div>
-                                    </Form>
-                                </Col>
-                            </Row>
-                        </div>
-                    </Col>
-                </Row>
+            <div className="row">
+                {/* Här börjar Left Container */}
+                <div className="col-md-6">
+                    <Row className="alert alert-dark text-center"> 
+                        <Col>
+                             <span className="lead font-weight-bold">{text}</span>
+                        </Col>
+                    </Row>
+
+                    <Row className="alert alert-info">
+                        <Col md={6}>
+                            <h4 className="text-right">Försäljare =></h4>
+                        </Col>
+                        <Col md={6}>
+                            <h4 className="text-left">{specificAuction.SkapadAv}</h4>
+                        </Col>
+                    </Row>
+                    <Row className="alert alert-dark">
+                        <Col md={12}><h5 className="text-center">{winningBid}</h5></Col>
+                    </Row>
+                        
+                     <Row className="text-center alert alert-info">
+                        <Col md={12}> <h5> Beskrivning </h5> </Col>
+                        <Col md={12}> {specificAuction.Beskrivning}</Col>
+                     </Row>
+                </div>
+
+
+                {/* Här börjar right container */}
+                <div className="col-md-5 p-3 text-center" id="rightDiv">
+                    <Row p-0>
+                        <Col md={12}> <h5>Slutdatum: {endDateString}</h5></Col>
+                    </Row>
+                    <Row>
+                        <Col md={12} className="m-3 text-center"> <h5>Utropspris 
+                                <span className="alert alert-danger">{specificAuction.Utropspris} kr</span>
+                            </h5>
+                        </Col>
+                        <Col md={12} className="m-3"> 
+                           <h5> Antal bud:
+                           <span className="alert alert-dark">{items.length}</span>
+                           </h5> 
+                        </Col>
+                        <Row>
+                            <Col md={12} className="ml-4"> <h5>Lista på bud</h5></Col>
+                            <Col md={12} className="text-center" id="bud"> 
+                                <div>
+                                    {listBids}
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <div className="container justify-content-center">
+                            <Col md={12} className="m-3 ml-5">
+                                <Form className="test" onSubmit={handleSubmit}>
+                                    <Form.Group controlId="formName">
+                                        <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formBid">
+                                        <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
+                                    </Form.Group>
+                                    <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+                                        Lägg bud
+                                    </Button>
+                                    <div className="errorMessage">{error}</div>
+                                </Form>
+                            </Col>
+                            </div>
+                        </Row>
+
+
+                     </Row>
+
+
+                </div>
             </div>
+        </div>
+
+
+        // <div className="container-fluid">
+        // <div className="card" id="container">
+        //     <h1 className="text-center">{specificAuction.Titel}</h1>
+        //         <Row className="text-center">
+        //             <Col md={6} className="card" id="leftCard">
+        //                 <div className="alert alert-dark"> 
+        //                     <span className="lead font-weight-bold">{text}</span>
+        //                 </div>
+        //             <Col><label className="lead text-center">Försäljare</label></Col>
+
+        //                 <Col className="leftRow1">{specificAuction.SkapadAv}</Col>
+        //                 <Row className="leftRow2">{winningBid}</Row>
+        //                     <label className="lead">Beskrivning</label>
+        //                 <Row className="leftRow4">{specificAuction.Beskrivning}</Row>
+                          
+                        
+        //             </Col>
+        //             <Col md={1} className="h"></Col>
+
+        //             <Col md={4} className="rightContainer card" id="rightCard">
+        //                 <div className="paddingCards">
+        //                     <Row>
+        //                         <Col md={12} id="utropsPris">Slutdatum: {endDateString} <br></br> 
+        //                         Utropspris: {specificAuction.Utropspris} kr <br></br> 
+        //                         Antal bud: {items.length}</Col>
+        //                     </Row>
+        //                     <Row>
+        //                         <Col md={8} id="bud"> Lista på bud: {listBids}
+        //                         </Col>
+
+        //                     </Row>
+        //                     <Row>
+        //                         <Col md={12}>
+        //                             <Form className="test" onSubmit={handleSubmit}>
+        //                                 <Form.Group controlId="formName">
+        //                                     <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
+        //                                 </Form.Group>
+        //                                 <Form.Group controlId="formBid">
+        //                                     <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
+        //                                 </Form.Group>
+        //                                 <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+        //                                     Lägg bud
+        //                         </Button>
+        //                                 <div className="errorMessage">{error}</div>
+        //                             </Form>
+        //                         </Col>
+        //                     </Row>
+        //                 </div>
+        //             </Col>
+        //         </Row>
+        //     </div>
+        // </div>
         );
     }
     else {

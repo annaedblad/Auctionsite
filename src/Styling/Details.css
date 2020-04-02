@@ -12,14 +12,15 @@
     }
 
     .test {
-        margin-top: 15px;
+        
     }
 
     #bud{
-        height: 350px;
-        border: 1px solid black;
+        height: 210px;
         overflow-y: scroll;
         margin: auto;
+        background-color: beige;
+        margin-left: 50px;
     }
     .leftRow1{
         height:50px;
@@ -47,6 +48,7 @@
 
     .paddingCards {
         padding: 25px;
+        background-color:
     }
 
     button[disabled=disabled], button:disabled {
@@ -56,4 +58,14 @@
     .errorMessage {
         font-size: 15px;
         color: red;
+    }
+
+    #container {
+        background-color: aliceblue;
+    }
+
+    #rightDiv {
+        background-color: beige;
+        margin-left: 25px;
+        border-radius: 20px;
     }
