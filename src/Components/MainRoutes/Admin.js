@@ -1,21 +1,20 @@
 import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styling/Admin.css";
+import { useForm } from "react-hook-form";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 
-const Admin = (props) => {
+const Admin = () => {
   const {
     updateAuction,
     allAuctions,
-    bids,
-    getBids,
     copyDetails,
-    deleteAuction, 
-    returnBids,
+    deleteAuction,
     clearForm,
     createAuction,
-    hasBids
   } = useContext(AuctionContext);
+
+  const { register, handleSubmit, errors, reset } = useForm();
   
   const[auctionId, setAuctionId] = useState('');
   const[title, setTitle] = useState('');
@@ -27,9 +26,21 @@ const Admin = (props) => {
   const[code, setCode] = useState('');
 
   const handleDelete = e => {
+    reset();
     deleteAuction(e.target.id);
+    setAuctionId('');
+    setTitle('');
+    setDescription('');
+    setStartDate('');
+    setEndDate('');
+    setPrice('');
+    setCreator('');
+    setCode('');
+    
+
   };
   const handleCopyDetails = e => {
+    reset();
     copyDetails(e.target.id);
     
     let auc = allAuctions.filter(on => on.AuktionID == e.target.id);
@@ -41,7 +52,7 @@ const Admin = (props) => {
     setPrice(auc[0].Utropspris);
     setCreator(auc[0].SkapadAv);
     setCode(auc[0].Gruppkod);
-
+    
     console.log(auc);
   };
 
@@ -55,9 +66,31 @@ const Admin = (props) => {
       Gruppkod: 2220,
       Utropspris: price,
       SkapadAv: creator
-      };
+      };       
     createAuction(auction);
+    reset();
+    setAuctionId('');
+    setTitle('');
+    setDescription('');
+    setStartDate('');
+    setEndDate('');
+    setPrice('');
+    setCreator('');
+    setCode('');
   };
+
+  const handleClearForm = () =>{
+    clearForm();
+    reset();
+    setAuctionId('');
+    setTitle('');
+    setDescription('');
+    setStartDate('');
+    setEndDate('');
+    setPrice('');
+    setCreator('');
+    setCode('');
+  }
 
   const handleUpdate = () =>{
     let auction = {
@@ -71,6 +104,15 @@ const Admin = (props) => {
       SkapadAv: creator
       };
     updateAuction(auction);
+    setAuctionId('');
+    setTitle('');
+    setDescription('');
+    setStartDate('');
+    setEndDate('');
+    setPrice('');
+    setCreator('');
+    setCode('');
+    reset();
   };
 
   var currentDate = new Date();
@@ -98,19 +140,6 @@ const Admin = (props) => {
     );
   });
 
-  // let fakeAuctionUpdate = {
-  //   AuktionID: 4676,
-  //   Titel: "Antik testlampa 2",
-  //   Beskrivning: "Uppdaterad via kod",
-  //   StartDatum: "2020-03-26T00:00:00",
-  //   SlutDatum: "2020-03-31T00:00:00",
-  //   Gruppkod: 2220,
-  //   Utropspris: 20000,
-  //   SkapadAv: "Richard"
-  // };
-
-  // updateAuction(fakeAuctionUpdate);
-
   return (
     <div className="card" id="container">
       <blockquote className="blockquote text-center">
@@ -129,12 +158,18 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="name"
-                    required
+                    name="exampleRequired"
+                    ref={
+                      register({
+                        required: true
+                      })
+                    }
                     maxLength="50"
                     minLength="5"
                     placeholder="max 50 signs"    
                     onChange={(e) => setTitle(e.target.value)}              
                   />
+                  {errors.exampleRequired && <span className = "errorMessage">This field is required</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -148,12 +183,18 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="description"
-                    required
+                    name="exampleRequired2"
+                    ref={
+                      register({
+                        required: true
+                      })
+                    }
                     maxLength="1000"
                     minLength="20"
                     placeholder="max 1000 signs"
                     onChange={(e) => setDescription(e.target.value)}
                   />
+                  {errors.exampleRequired2 && <span className = "errorMessage">This field is required</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -166,8 +207,14 @@ const Admin = (props) => {
                     className="form-control"
                     id="price"
                     onChange={(e) => setPrice(e.target.value)}
-                    required
+                    name="exampleRequired3"
+                    ref={
+                      register({
+                        required: true
+                      })
+                    }
                   />
+                  {errors.exampleRequired3 && <span className = "errorMessage">This field is required</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -193,8 +240,14 @@ const Admin = (props) => {
                     type="datetime-local"
                     id="end"
                     onChange={(e) => setEndDate(e.target.value)}
-                    required
+                    name="exampleRequired4"
+                    ref={
+                      register({
+                        required: true
+                      })
+                    }
                   />
+                  {errors.exampleRequired4 && <span className = "errorMessage">This field is required</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -207,8 +260,14 @@ const Admin = (props) => {
                     className="form-control"
                     id="creator"
                     onChange={(e) => setCreator(e.target.value)}
-                    required                                        
+                    name="exampleRequired5"
+                    ref={
+                      register({
+                        required: true
+                      })
+                    }                                        
                   />
+                  {errors.exampleRequired5 && <span className = "errorMessage">This field is required</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -217,7 +276,7 @@ const Admin = (props) => {
                     type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
-                    onClick = {handleUpdate}
+                    onClick = {handleSubmit(handleUpdate)}
                     hidden           
                   >
                     Update
@@ -226,7 +285,7 @@ const Admin = (props) => {
                     type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "addNew"
-                    onClick = {createNewAuction}
+                    onClick = {handleSubmit(createNewAuction)}
                   >
                     Add new
                   </button>{" "}
@@ -234,7 +293,7 @@ const Admin = (props) => {
                   <button
                     type="reset"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
-                    onClick = {clearForm}
+                    onClick = {handleClearForm}
                     
                   >
                     Clear Form

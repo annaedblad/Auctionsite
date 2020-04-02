@@ -29,3 +29,7 @@ button{
 li {
     cursor: pointer;
 }
+
+.errorMessage{
+    color: red;
+}
