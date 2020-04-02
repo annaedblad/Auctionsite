@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import Admin from "../Components/MainRoutes/Admin";
 
 export const AuctionContext = createContext();
 
@@ -13,6 +12,7 @@ const AuctionContextProvider = props => {
         console.log(data);
         return data;
       });
+      setBidFlag(fetchedData);
       setAllAuctions(fetchedData);
     })();
   },[]);
@@ -23,7 +23,21 @@ const AuctionContextProvider = props => {
         console.log(data);
         return data;
       });
+      setBidFlag(fetchedData);
       setAllAuctions(fetchedData);
+  }
+
+  const setBidFlag = (data) =>{
+    data.forEach(auction => {
+      hasBids(auction.AuktionID).then(bids => {
+        if(bids){
+          auction.hasBid = true;
+        }
+        else{
+          auction.hasBid = false;
+        }
+      })
+    });
   }
 
   const [search, setSearch] = useState("");
@@ -51,8 +65,23 @@ const AuctionContextProvider = props => {
     return fetchedData;
   }
 
+  const hasBids = async (auctionID) =>{
+    let uri = "http://nackowskis.azurewebsites.net/api/bud/2220/" + auctionID;
+    let bidBool = await fetch(uri)
+    .then(res => res.json())
+    .then(data => {
+      if(data.length > 0){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    return bidBool;
+  }
+
   const updateAuction = (auction) => {
-    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/";
     fetch(uri, {
       method: "PUT",
       body: JSON.stringify(auction),
@@ -60,13 +89,13 @@ const AuctionContextProvider = props => {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json"
       }
-    }).then(() => console.log("Auction Updated"));
+    }).then(() => console.log(
+      auction));
+      updateAllAuctions();
   };
 
   const createAuction = (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
-    auction.StartDatum = new Date();
-    auction.Gruppkod = 2200;
     fetch(uri, {
       method: "POST",
       body: JSON.stringify(auction),
@@ -74,7 +103,10 @@ const AuctionContextProvider = props => {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json"
       }
-    }).then(() => console.log("Auction Created"));
+    }).then(() => {
+      console.log("Auction Created");
+      updateAllAuctions();
+    });
   };
 
   async function setNewBid (bid) {
@@ -132,7 +164,8 @@ const AuctionContextProvider = props => {
         setNewBid,
         returnBids,
         clearForm,
-        updateAllAuctions      
+        updateAllAuctions,
+        hasBids     
       }}
     >
       {props.children}

@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styling/Admin.css";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 
 const Admin = (props) => {
-  //logic needs to be created
-  // let list = props.values.filter(allAuctions => {
-  //     return(<li>{allAuctions} <button onClick = {() => props.remove(openAuctionItem)}>Ta bort</button></li>)
-  // });
   const {
     updateAuction,
     allAuctions,
@@ -17,24 +13,69 @@ const Admin = (props) => {
     deleteAuction, 
     returnBids,
     clearForm,
-    createAuction
+    createAuction,
+    hasBids
   } = useContext(AuctionContext);
   
+  const[auctionId, setAuctionId] = useState('');
+  const[title, setTitle] = useState('');
+  const[description, setDescription] = useState('');
+  const[startDate, setStartDate] = useState('');
+  const[endDate, setEndDate] = useState('');
+  const[price, setPrice] = useState('');
+  const[creator, setCreator] = useState('');
+  const[code, setCode] = useState('');
+
   const handleDelete = e => {
     deleteAuction(e.target.id);
   };
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
+    
+    let auc = allAuctions.filter(on => on.AuktionID == e.target.id);
+    setAuctionId(auc[0].AuktionID);
+    setTitle(auc[0].Titel);
+    setDescription(auc[0].Beskrivning);
+    setStartDate(auc[0].StartDatum);
+    setEndDate(auc[0].SlutDatum);
+    setPrice(auc[0].Utropspris);
+    setCreator(auc[0].SkapadAv);
+    setCode(auc[0].Gruppkod);
+
+    console.log(auc);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    createAuction();
-  }
+  const createNewAuction = () =>{
+    let auction = {
+      AuktionID: "0000",
+      Titel: title,
+      Beskrivning: description,
+      StartDatum: new Date().toLocaleString(),
+      SlutDatum: endDate,
+      Gruppkod: 2220,
+      Utropspris: price,
+      SkapadAv: creator
+      };
+    createAuction(auction);
+  };
+
+  const handleUpdate = () =>{
+    let auction = {
+      AuktionID: auctionId,
+      Titel: title,
+      Beskrivning: description,
+      StartDatum: startDate,
+      SlutDatum: endDate,
+      Gruppkod: 2200,
+      Utropspris: price,
+      SkapadAv: creator
+      };
+    updateAuction(auction);
+  };
 
   var currentDate = new Date();
-
-  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());
+  
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && on.hasBid === false);
   
   let list = ongoingAuctions.map(auction => {
     return (
@@ -72,15 +113,15 @@ const Admin = (props) => {
 
   return (
     <div className="card" id="container">
-      <blockquote class="blockquote text-center">
+      <blockquote className="blockquote text-center">
         <h3>Admin Menu</h3>
       </blockquote>
       <div className="row">
         <div className="col-sm">
           <div className="card" id="left">
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Title
                 </label>
                 <div className="col-sm-9">
@@ -92,13 +133,12 @@ const Admin = (props) => {
                     maxLength="50"
                     minLength="5"
                     placeholder="max 50 signs"    
-                                   
+                    onChange={(e) => setTitle(e.target.value)}              
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label
-                  for="inputDescription"
+                <label                  
                   className="col-sm-2 col-form-label"
                 >
                   Description
@@ -111,12 +151,13 @@ const Admin = (props) => {
                     required
                     maxLength="1000"
                     minLength="20"
-                    placeHolder="max 1000 signs"
+                    placeholder="max 1000 signs"
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputPrice" className="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Price
                 </label>
                 <div className="col-sm-9">
@@ -124,6 +165,7 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="price"
+                    onChange={(e) => setPrice(e.target.value)}
                     required
                   />
                 </div>
@@ -135,13 +177,14 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="start"
-                    placeholder="Starts when you click on 'Add new"
+                    placeholder="Starts when you click on 'Add new'"
+                    onChange={(e) => setStartDate(e.target.value)}
                     disabled
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputeEnd" className="col-2 col-form-label">
+                <label className="col-2 col-form-label">
                   Expiration
                 </label>
                 <div className="col-9">
@@ -149,12 +192,13 @@ const Admin = (props) => {
                     className="form-control"
                     type="datetime-local"
                     id="end"
+                    onChange={(e) => setEndDate(e.target.value)}
                     required
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Creator
                 </label>
                 <div className="col-sm-9">
@@ -162,6 +206,7 @@ const Admin = (props) => {
                     type="text"
                     className="form-control"
                     id="creator"
+                    onChange={(e) => setCreator(e.target.value)}
                     required                                        
                   />
                 </div>
@@ -169,11 +214,11 @@ const Admin = (props) => {
               <div className="form-group row">
                 <div className="col-sm-11">
                 <button
-                    type="submit"
+                    type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
-                    disabled
-                    onClick = {updateAuction}
+                    onClick = {handleUpdate}
+                                     
                   >
                     Update
                   </button>
@@ -181,7 +226,7 @@ const Admin = (props) => {
                     type="button"
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "addNew"
-                    onClick = {createAuction}
+                    onClick = {createNewAuction}
                   >
                     Add new
                   </button>{" "}
@@ -202,7 +247,7 @@ const Admin = (props) => {
         <div className="col-sm">
           <div className="row">
             <div className="col-12">
-              <div class="card" id="right">
+              <div className="card" id="right">
                 <ul className="list-group overflow-auto">
                   {/* just for testing, will be populated via mapping */}
 
