@@ -31,8 +31,9 @@ const Admin = (props) => {
   };
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
-    setAuctionId(e.target.id);
+    
     let auc = allAuctions.filter(on => on.AuktionID == e.target.id);
+    setAuctionId(auc[0].AuktionID);
     setTitle(auc[0].Titel);
     setDescription(auc[0].Beskrivning);
     setStartDate(auc[0].StartDatum);
