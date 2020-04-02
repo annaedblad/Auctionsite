@@ -17,18 +17,31 @@ const Admin = (props) => {
     hasBids
   } = useContext(AuctionContext);
   
+  const[auctionId, setAuctionId] = useState('');
   const[title, setTitle] = useState('');
   const[description, setDescription] = useState('');
   const[startDate, setStartDate] = useState('');
   const[endDate, setEndDate] = useState('');
   const[price, setPrice] = useState('');
   const[creator, setCreator] = useState('');
+  const[code, setCode] = useState('');
 
   const handleDelete = e => {
     deleteAuction(e.target.id);
   };
   const handleCopyDetails = e => {
     copyDetails(e.target.id);
+    setAuctionId(e.target.id);
+    let auc = allAuctions.filter(on => on.AuktionID == e.target.id);
+    setTitle(auc[0].Titel);
+    setDescription(auc[0].Beskrivning);
+    setStartDate(auc[0].StartDatum);
+    setEndDate(auc[0].SlutDatum);
+    setPrice(auc[0].Utropspris);
+    setCreator(auc[0].SkapadAv);
+    setCode(auc[0].Gruppkod);
+
+    console.log(auc);
   };
 
   const createNewAuction = () =>{
@@ -47,12 +60,12 @@ const Admin = (props) => {
 
   const handleUpdate = () =>{
     let auction = {
-      AuktionID: '0000',
+      AuktionID: auctionId,
       Titel: title,
       Beskrivning: description,
-      StartDatum: new Date().toLocaleString(),
+      StartDatum: startDate,
       SlutDatum: endDate,
-      Gruppkod: 2220,
+      Gruppkod: 2200,
       Utropspris: price,
       SkapadAv: creator
       };
@@ -204,7 +217,7 @@ const Admin = (props) => {
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
                     onClick = {handleUpdate}
-                    disabled                    
+                                     
                   >
                     Update
                   </button>

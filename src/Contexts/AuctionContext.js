@@ -81,7 +81,7 @@ const AuctionContextProvider = props => {
   }
 
   const updateAuction = (auction) => {
-    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
+    let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220/";
     fetch(uri, {
       method: "PUT",
       body: JSON.stringify(auction),
@@ -90,8 +90,8 @@ const AuctionContextProvider = props => {
         "Content-Type": "application/json"
       }
     }).then(() => console.log(
-      "Auction Updated"));
-    updateAllAuctions();
+      auction));
+      updateAllAuctions();
   };
 
   const createAuction = (auction) => {
