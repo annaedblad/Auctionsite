@@ -7,7 +7,9 @@ import '../../Styling/Details.css';
 import { useParams } from "react-router-dom";
 import { AuctionContext } from "../../Contexts/AuctionContext";
 var tempoId = "";
+
 const Details = () => {
+    
     let { id } = useParams();
     const { allAuctions, getBids, bids, setNewBid } = useContext(AuctionContext);
     const specificAuction = allAuctions.find(x => x.AuktionID == id);
@@ -27,18 +29,17 @@ const Details = () => {
         if (bidAmount.value <= highestBidd || bidAmount.value <= specificAuction.Utropspris) {
             setError("För lågt bud angivet");
         }
-
         else {
             setError("");
-            let fakeBid = {
+            let newBid = {
                 Summa: bidAmount.value,
                 AuktionID: id,
                 Budgivare: formName.value
             }
-            bidAmount.value="";
-            formName.value="";
+            bidAmount.value = "";
+            formName.value = "";
 
-            await setNewBid(fakeBid);
+            await setNewBid(newBid);
             await getBids(id);
         }
     }
@@ -54,15 +55,15 @@ const Details = () => {
                 return a.Summa < b.Summa ? 1 : -1;
             });
         let items;
-    
-        items = bids.map(x => { return (<div>{x.Budgivare}: {x.Summa} kr</div>) });
+
+        items = bids.map((x, index) => { return (<div key={index}>{x.Budgivare}: {x.Summa} kr</div>) });
 
         let listBids = "";
         let currentDate = new Date();
         let isOpen = currentDate.getTime() < Date.parse(specificAuction.SlutDatum);
         let text = "";
         let winningBid = "";
-        
+
         if (isOpen == true) {
             text = "Auktionen är öppen";
             listBids = items;
@@ -101,15 +102,15 @@ const Details = () => {
                                 <Col md={12}>
                                     <Form className="test" onSubmit={handleSubmit}>
                                         <Form.Group controlId="formName">
-                                            <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2"  disabled={!isOpen} />
+                                            <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
                                         </Form.Group>
                                         <Form.Group controlId="formBid">
-                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1"  disabled={!isOpen} />
+                                            <Form.Control type="text" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
                                         </Form.Group>
                                         <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                 </Button>
-                                <div style={{ fontSize: 15, color: "red" }}>
+                                        <div style={{ fontSize: 15, color: "red" }}>
                                             {error}
                                         </div>
                                     </Form>
