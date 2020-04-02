@@ -110,9 +110,7 @@ const Details = () => {
                                         <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                 </Button>
-                                        <div style={{ fontSize: 15, color: "red" }}>
-                                            {error}
-                                        </div>
+                                        <div className="errorMessage">{error}</div>
                                     </Form>
                                 </Col>
                             </Row>
