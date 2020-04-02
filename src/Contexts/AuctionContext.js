@@ -140,13 +140,13 @@ const AuctionContextProvider = props => {
     document.getElementById("start").value = new Date(Date.parse(id[0].StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','');
     document.getElementById("end").value = id[0].SlutDatum;
     document.getElementById("creator").value = id[0].SkapadAv;  
-    document.getElementById("update").removeAttribute("disabled");
-    document.getElementById("addNew").setAttribute("disabled", true);    
+    document.getElementById("update").removeAttribute("hidden");
+    document.getElementById("addNew").setAttribute("hidden", true);    
   }
 
   const clearForm = () =>{
-    document.getElementById("addNew").removeAttribute("disabled");
-    document.getElementById("update").setAttribute("disabled", true);
+    document.getElementById("addNew").removeAttribute("hidden");
+    document.getElementById("update").setAttribute("hidden", true);
   }  
 
   return (

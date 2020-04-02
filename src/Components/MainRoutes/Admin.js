@@ -218,7 +218,7 @@ const Admin = (props) => {
                     className="btn btn-outline-info my-2 my-sm-0 float-right"
                     id = "update"
                     onClick = {handleUpdate}
-                                     
+                    hidden           
                   >
                     Update
                   </button>
