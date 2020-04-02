@@ -147,6 +147,7 @@ const AuctionContextProvider = props => {
   const clearForm = () =>{
     document.getElementById("addNew").removeAttribute("hidden");
     document.getElementById("update").setAttribute("hidden", true);
+    
   }  
 
   return (
