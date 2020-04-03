@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Row, Col, Button, Form} from 'react-bootstrap';
+import { Row, Col, Form} from 'react-bootstrap';
 // import { Form } from 'react-bootstrap/Form';
 import '../../Styling/Details.css';
 import { useParams } from "react-router-dom";
