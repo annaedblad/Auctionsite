@@ -23,7 +23,7 @@ const Auctions = () => {
         .map(auction => {
         return(
         <div className="col-sm-4" key={auction.AuktionID}>
-        <div className="card">
+        <div className="card activeCard">
             <NavLink className="link" to={`/Details/${auction.AuktionID}`}>
             <div id="auction_card">
             <img src={AuctionOpen} id="imgSold" alt=""/>
@@ -31,9 +31,9 @@ const Auctions = () => {
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
                     <p className="card-text text-center">{auction.Beskrivning}</p>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
-                        <li className="list-group-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
-                        <li className="list-group-item">Utropspris: {auction.Utropspris} kr</li>
+                        <li className="list-group-item active-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                        <li className="list-group-item active-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                        <li className="list-group-item active-item">Utropspris: {auction.Utropspris} kr</li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +52,7 @@ const Auctions = () => {
             .map(auction => {
               return (
                 <div className="col-sm-4" key={auction.AuktionID}>
-                  <div className="card">
+                  <div className="card historicCard">
                     <a className="link" href={`/Details/${auction.AuktionID}`}>
                     <div id="auction_card">
                       <img src={SoldAuction} id="imgSold" alt=""/>
@@ -60,9 +60,9 @@ const Auctions = () => {
                             <h5 className="card-title text-sm-center">{auction.Titel}</h5>
                             <p className="card-text text-center">{auction.Beskrivning}</p>
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
-                                <li className="list-group-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
-                                <li className="list-group-item">Utropspris: {auction.Utropspris} kr</li>
+                                <li className="list-group-item historic-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                                <li className="list-group-item historic-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
+                                <li className="list-group-item historic-item">Utropspris: {auction.Utropspris} kr</li>
                             </ul>
                         </div>
                     </div>
@@ -90,8 +90,7 @@ const Auctions = () => {
   else if (id === "historic") {
     return (
       <div className="auctionContainer container text-center">
-        <h1>Historical Auctions page</h1>
-        <p className="lead">Detta är historiska sidan</p>
+        <h1>Historiska auktioner</h1>
           <div className="row">
             {getHistoric()}
           </div>
@@ -103,7 +102,7 @@ const Auctions = () => {
 
     return (
         <div className="auctionContainer container">
-          <h1 className="text-center">Actual Auctions page</h1>
+          <h1 className="text-center">Aktuella auktioner</h1>
           <div className="row justify-content-center">
             {getOngoing()}
           </div>

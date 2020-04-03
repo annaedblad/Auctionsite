@@ -1,14 +1,57 @@
-#auction_card {
-    width: 20rem;;
+/* #auction_card {
+    width: 20rem;
+} */
+
+.activeCard{
+    background-color: green;
+    min-height:25rem;
+    border:2px solid black;
+    box-shadow: 5px 5px 5px grey;
+    transition: 0.3s all ease-in-out;
 }
 
+.activeCard:hover{
+    box-shadow: 10px 10px 5px grey;
+    transform: rotate(-5deg);
+}
+
+.active-item{
+    background-color: rgb(22, 145, 22);
+    display:flex;
+    justify-content: center;
+    color:white;
+}
+
+
+.historicCard{
+    background-color: rgb(173, 25, 25);
+    min-height:25rem;
+    border:2px solid black;
+    box-shadow: 5px 5px 5px grey;
+    transition: 0.3s all ease-in-out;
+}
+
+.historicCard:hover{
+    box-shadow: 10px 10px 5px grey;
+    transform: rotate(-5deg);
+}
+
+.historic-item{
+    background-color: rgb(199, 31, 31);
+    display:flex;
+    justify-content: center;
+    color:white;
+}
 .link {
-    color: black;
+    color: white;
     text-decoration: none;
+    transition: 0.3s all ease-in-out;
 }
 .link:hover {
-    color:rgb(0, 196, 0);
+    color: white;
+    text-decoration: none;
 }
+
 #jumbotronHeader {
     font-family: 'Comic Neue', cursive;
 }
