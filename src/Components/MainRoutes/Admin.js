@@ -112,7 +112,7 @@ const Admin = () => {
           id={auction.AuktionID}
           onClick={handleDelete}
           type="button"
-          className="btn btn-outline-info btn-sm float-right"
+          className="btn btn-outline-warning btn-sm float-right"
         >
           Delete
         </button>
@@ -130,10 +130,10 @@ const Admin = () => {
           <div className="card" id="left">
             <form>
               <div className="form-group row">
-                <label className="col-sm-3 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Title
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-10">
                   <input
                     type="text"
                     className="form-control"
@@ -154,11 +154,11 @@ const Admin = () => {
               </div>
               <div className="form-group row">
                 <label                  
-                  className="col-sm-3 col-form-label"
+                  className="col-sm-2 col-form-label"
                 >
                   Description
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-10">
                   <textarea
                     type="text"
                     className="form-control"
@@ -178,10 +178,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-3 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Price
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-10">
                   <input
                     type="number"
                     className="form-control"
@@ -198,8 +198,8 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-3 col-form-label">Start</label>
-                <div className="col-sm-9">
+                <label className="col-sm-2 col-form-label">Start</label>
+                <div className="col-sm-10">
                   <input
                     type="text"
                     className="form-control"
@@ -211,10 +211,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-3 col-form-label">
+                <label className="col-2 col-form-label">
                   Expiration
                 </label>
-                <div className="col-9">
+                <div className="col-10">
                   <input
                     className="form-control"
                     type="datetime-local"
@@ -231,10 +231,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-3 col-form-label">
+                <label className="col-sm-2 col-form-label">
                   Creator
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-10">
                   <input
                     type="text"
                     className="form-control"
@@ -250,10 +250,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <div className="col-sm-11">
+                <div className="col-sm-12">
                 <button
                     type="button"
-                    className="btn btn-outline-info my-2 my-sm-0 float-right"
+                    className="btn btn-outline-warning my-2 my-sm-0 float-right"
                     id = "update"
                     onClick = {handleSubmit(handleUpdate)}
                     hidden           
