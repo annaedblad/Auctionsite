@@ -114,7 +114,7 @@ const Admin = () => {
           type="button"
           className="btn btn-outline-warning btn-sm float-right"
         >
-          Delete
+          Ta bort
         </button>
       </li>
     );
@@ -123,7 +123,7 @@ const Admin = () => {
   return (
     <div className="card" id="container">
       <blockquote className="blockquote text-center">
-        <h1>Admin Menu</h1>
+        <h1>Admin Meny</h1>
       </blockquote>
       <div className="row">
         <div className="col-sm">
@@ -131,7 +131,7 @@ const Admin = () => {
             <form>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">
-                  Title
+                  Titel
                 </label>
                 <div className="col-sm-10">
                   <input
@@ -146,17 +146,17 @@ const Admin = () => {
                     }
                     maxLength="50"
                     minLength="5"
-                    placeholder="max 50 signs"    
+                    placeholder="max 50 tecken"    
                     onChange={(e) => setTitle(e.target.value)}              
                   />
-                  {errors.exampleRequired && <span className = "errorMessage">This field is required</span>}
+                  {errors.exampleRequired && <span className = "errorMessage">*Obligatorisk</span>}
                 </div>
               </div>
               <div className="form-group row">
                 <label                  
                   className="col-sm-2 col-form-label"
                 >
-                  Description
+                  Beskrivning
                 </label>
                 <div className="col-sm-10">
                   <textarea
@@ -171,15 +171,15 @@ const Admin = () => {
                     }
                     maxLength="1000"
                     minLength="20"
-                    placeholder="max 1000 signs"
+                    placeholder="max 1000 tecken"
                     onChange={(e) => setDescription(e.target.value)}
                   />
-                  {errors.exampleRequired2 && <span className = "errorMessage">This field is required</span>}
+                  {errors.exampleRequired2 && <span className = "errorMessage">*Obligatorisk</span>}
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">
-                  Price
+                  Utropspris
                 </label>
                 <div className="col-sm-10">
                   <input
@@ -194,7 +194,7 @@ const Admin = () => {
                       })
                     }
                   />
-                  {errors.exampleRequired3 && <span className = "errorMessage">This field is required</span>}
+                  {errors.exampleRequired3 && <span className = "errorMessage">*Obligatorisk</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -204,7 +204,7 @@ const Admin = () => {
                     type="text"
                     className="form-control"
                     id="start"
-                    placeholder="Starts when you click on 'Add new'"
+                    placeholder="Startar när du klickar på 'Lägg till'"
                     onChange={(e) => setStartDate(e.target.value)}
                     disabled
                   />
@@ -212,7 +212,7 @@ const Admin = () => {
               </div>
               <div className="form-group row">
                 <label className="col-2 col-form-label">
-                  Expiration
+                  Slut
                 </label>
                 <div className="col-10">
                   <input
@@ -227,12 +227,12 @@ const Admin = () => {
                       })
                     }
                   />
-                  {errors.exampleRequired4 && <span className = "errorMessage">This field is required</span>}
+                  {errors.exampleRequired4 && <span className = "errorMessage">*Obligatorisk</span>}
                 </div>
               </div>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">
-                  Creator
+                  Skapad Av
                 </label>
                 <div className="col-sm-10">
                   <input
@@ -246,7 +246,7 @@ const Admin = () => {
                         required: true
                       })}                                        
                   />
-                  {errors.exampleRequired5 && <span className = "errorMessage">This field is required</span>}
+                  {errors.exampleRequired5 && <span className = "errorMessage">*Obligatorisk</span>}
                 </div>
               </div>
               <div className="form-group row">
@@ -258,7 +258,7 @@ const Admin = () => {
                     onClick = {handleSubmit(handleUpdate)}
                     hidden           
                   >
-                    Update
+                    Uppdatera
                   </button>
                   <button
                     type="button"
@@ -266,7 +266,7 @@ const Admin = () => {
                     id = "addNew"
                     onClick = {handleSubmit(createNewAuction)}
                   >
-                    Add new
+                    Lägg till
                   </button>{" "}                  
                   <button
                     type="reset"
@@ -274,7 +274,7 @@ const Admin = () => {
                     onClick = {handleClearForm}
                     
                   >
-                    Clear Form
+                    Rensa
                   </button>
                 </div>
               </div>
