@@ -79,7 +79,7 @@ const Details = () => {
 
     return (
         <div className="container">
-           <h1 className="text-center" id="auctionTitle">Auction Object : {specificAuction.Titel}</h1>
+           <h1 className="text-center" id="auctionTitle">Auktionsobjekt : {specificAuction.Titel}</h1>
 
             <div className="row mainRow">
                 {/* Här börjar Left Container */}

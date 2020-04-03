@@ -124,7 +124,7 @@ const Admin = () => {
   return (
     <div className="card" id="container">
       <blockquote className="blockquote text-center">
-        <h1>Admin Meny</h1>
+        <h1>Adminmeny</h1>
       </blockquote>
       <div className="row">
         <div className="col-sm">
