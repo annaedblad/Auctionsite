@@ -141,9 +141,9 @@ const Details = () => {
                                         <Form.Group controlId="formBid">
                                             <Form.Control type="number" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
                                         </Form.Group>
-                                        <Button id="bidButton" className="btn-block btn-warning" type="submit" disabled={!isOpen}>
+                                        <button id="bidButton" className="btn btn-outline-warning" type="submit" disabled={!isOpen}>
                                             Lägg bud
-                                        </Button>
+                                        </button>
                                         <div className="errorMessage">{error}</div>
                                     </Form>
                                 </Col>
