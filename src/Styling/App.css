@@ -2,6 +2,11 @@
     width: 20rem;
 } */
 
+.jumbotron{
+    background-color: green;
+    border-radius:0;
+}
+
 .activeCard{
     background-color: green;
     min-height:25rem;
