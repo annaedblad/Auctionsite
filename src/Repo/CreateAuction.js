@@ -1,6 +1,6 @@
-const CreateAuction = (auction) => {
+const CreateAuction = async (auction) => {
     let uri = "http://nackowskis.azurewebsites.net/api/Auktion/2220";
-    fetch(uri, {
+    await fetch(uri, {
       method: "POST",
       body: JSON.stringify(auction),
       headers: {
