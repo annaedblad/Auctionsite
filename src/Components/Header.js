@@ -1,11 +1,9 @@
 import React from 'react';
-
+import logo from '../Styling/imgs/header.svg'
 const Header = () => {
     return (
         <div className="headerContainer">
-            <div className="jumbotron p-5 m-0">
-                <h1 id="jumbotronHeader" className="text-center">Auction House 101</h1>
-            </div>
+            <img src={logo} alt="logo" className="logo"/>
         </div>
     );
 }
