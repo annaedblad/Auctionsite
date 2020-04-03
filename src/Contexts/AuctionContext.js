@@ -17,7 +17,12 @@ const AuctionContextProvider = props => {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
-   updateAllAuctions();
+    const fetch = async () =>{
+      let fetchedData = await GetAllAuctions();
+      SetBidFlag(fetchedData);
+      setAllAuctions(fetchedData);
+    }
+    fetch();
   },[]);
 
   const updateAllAuctions = async () =>{
@@ -26,17 +31,20 @@ const AuctionContextProvider = props => {
       setAllAuctions(fetchedData);
   }
 
-  const updateAuction = (auction) => {
-    UpdateAuction(auction);
+  const updateAuction = async (auction) => {
+    await UpdateAuction(auction);
+    await updateAllAuctions();
   };
 
-  const createAuction = (auction) => {
-    CreateAuction(auction);
+  const createAuction = async (auction) => {
+    await CreateAuction(auction);
+    await updateAllAuctions();
   };
 
   
-  const deleteAuction = id => {
-    DeleteAuction(id);
+  const deleteAuction = async id => {
+    await DeleteAuction(id);
+    await updateAllAuctions();
   };
 
   const listAuctions = searchParam => {

@@ -97,7 +97,7 @@ const Admin = () => {
   };
 
   var currentDate = new Date();  
-  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && on.hasBid === false);  
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());  
   let list = ongoingAuctions.map(auction => {
     return (
       <li
