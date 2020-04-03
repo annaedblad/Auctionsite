@@ -81,7 +81,7 @@ const Details = () => {
         <div className="container">
            <h1 className="text-center" id="auctionTitle">Auction Object : {specificAuction.Titel}</h1>
 
-            <div className="row">
+            <div className="row mainRow">
                 {/* Här börjar Left Container */}
                 <div className="col-md-6">
                     <Row className="alert alert-dark text-center"> 
@@ -110,22 +110,22 @@ const Details = () => {
 
 
                 {/* Här börjar right container */}
-                <div className="col-md-5 p-3 text-center" id="rightDiv">
-                    <Row p-0>
+                <div className="col-md-5" id="rightDiv">
+                    <Row className="headrow">
                         <Col md={12}> <h5>Slutdatum: {endDateString}</h5></Col>
                     </Row>
-                    <Row>
-                        <Col md={12} className="m-3 text-center"> <h5>Utropspris 
-                                <span className="alert alert-danger">{specificAuction.Utropspris} kr</span>
+                    <Row className="contentrow">
+                        <Col md={12} className="price-col"><h5 className="price-text">Utropspris 
+                                <span className="alert price-box">{specificAuction.Utropspris} kr</span>
                             </h5>
                         </Col>
-                        <Col md={12} className="m-3"> 
-                           <h5> Antal bud:
-                           <span className="alert alert-dark">{items.length}</span>
+                        <Col md={12} className="bid-col"> 
+                           <h5 className="bid-text"> Antal bud:
+                           <span className="alert amount-bid-box">{items.length}</span>
                            </h5> 
                         </Col>
                         <Row>
-                            <Col md={12} className="ml-4"> <h5>Lista på bud</h5></Col>
+                            <Col md={12}> <h5 className="text-center mt-5">Lista på bud</h5></Col>
                             <Col md={10} className="text-center" id="bud"> 
                                 <div>
                                     {listBids}
@@ -133,8 +133,8 @@ const Details = () => {
                             </Col>
                         </Row>
                         <Row>
-                            <div className="container justify-content-center">
-                                <Col md={12} className="m-3 ml-5">
+                            <div className="container-fluid justify-content-center">
+                                <Col md={12} className="mt-5">
                                     <Form className="test" onSubmit={handleSubmit}>
                                         <Form.Group controlId="formName">
                                             <Form.Control type="text" name="formName" placeholder="Ange namn" required minLength="2" disabled={!isOpen} />
@@ -142,7 +142,7 @@ const Details = () => {
                                         <Form.Group controlId="formBid">
                                             <Form.Control type="number" name="bidAmount" placeholder="Ange bud" required minLength="1" disabled={!isOpen} />
                                         </Form.Group>
-                                        <Button id="bidButton" className="btn btn-secondary" type="submit" disabled={!isOpen}>
+                                        <Button id="bidButton" className="btn-block btn-warning" type="submit" disabled={!isOpen}>
                                             Lägg bud
                                         </Button>
                                         <div className="errorMessage">{error}</div>
