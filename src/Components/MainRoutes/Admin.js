@@ -12,6 +12,7 @@ const Admin = () => {
     deleteAuction,
     clearForm,
     createAuction,
+    flag
   } = useContext(AuctionContext);
 
   const { register, handleSubmit, errors, reset } = useForm();
@@ -96,8 +97,8 @@ const Admin = () => {
     reset();
   };
 
-  var currentDate = new Date();  
-  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime());  
+  var currentDate = new Date(); 
+  let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && flag.includes(on.AuktionID) === false);  
   let list = ongoingAuctions.map(auction => {
     return (
       <li

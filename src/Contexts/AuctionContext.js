@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from "react";
 import GetAllAuctions from '../Repo/GetAllAuctions';
 import GetAllBids from '../Repo/GetAllBids';
 import CreateBid from '../Repo/CreateBid';
-import SetBidFlag from '../Services/SetBidFlag';
 import CreateAuction from '../Repo/CreateAuction';
 import UpdateAuction from '../Repo/UpdateAuction';
 import DeleteAuction from '../Repo/DeleteAuction';
@@ -15,20 +14,35 @@ const AuctionContextProvider = props => {
   const [allAuctions, setAllAuctions] = useState([]);
   const [search, setSearch] = useState("");
   const [bids, setBids] = useState([]);
+  const[flag, setFlag] = useState([]);
 
   useEffect(() => {
     const fetch = async () =>{
       let fetchedData = await GetAllAuctions();
-      SetBidFlag(fetchedData);
-      setAllAuctions(fetchedData);
+      await flagAuctions(fetchedData).then(setAllAuctions(fetchedData));
+      
     }
     fetch();
   },[]);
 
   const updateAllAuctions = async () =>{
       let fetchedData = await GetAllAuctions();
-      SetBidFlag(fetchedData);
       setAllAuctions(fetchedData);
+  }
+
+  const asyncForEach = async (array, callback) => {
+    for (let index = 0; index < array.length; index++) {
+      await callback(array[index], index, array);
+    }
+  }
+
+  const flagAuctions = async (data) => {
+    let auctionWithBids = [];
+    await asyncForEach(data, async (auction) => { 
+      let bidA = await GetAllBids(auction.AuktionID);
+      if(bidA.length > 0) auctionWithBids.push(auction.AuktionID);
+    })
+    setFlag(auctionWithBids);
   }
 
   const updateAuction = async (auction) => {
@@ -83,7 +97,8 @@ const AuctionContextProvider = props => {
         copyDetails,
         setNewBid,
         clearForm,
-        updateAllAuctions    
+        updateAllAuctions,
+        flag  
       }}
     >
       {props.children}
