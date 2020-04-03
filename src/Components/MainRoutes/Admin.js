@@ -130,10 +130,10 @@ const Admin = () => {
           <div className="card" id="left">
             <form>
               <div className="form-group row">
-                <label className="col-sm-2 col-form-label">
+                <label className="col-sm-3 col-form-label">
                   Titel
                 </label>
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                   <input
                     type="text"
                     className="form-control"
@@ -154,11 +154,11 @@ const Admin = () => {
               </div>
               <div className="form-group row">
                 <label                  
-                  className="col-sm-2 col-form-label"
+                  className="col-sm-3 col-form-label"
                 >
                   Beskrivning
                 </label>
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                   <textarea
                     type="text"
                     className="form-control"
@@ -178,10 +178,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-2 col-form-label">
+                <label className="col-sm-3 col-form-label">
                   Utropspris
                 </label>
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                   <input
                     type="number"
                     className="form-control"
@@ -198,8 +198,8 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-2 col-form-label">Start</label>
-                <div className="col-sm-10">
+                <label className="col-sm-3 col-form-label">Start</label>
+                <div className="col-sm-9">
                   <input
                     type="text"
                     className="form-control"
@@ -211,10 +211,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-2 col-form-label">
+                <label className="col-3 col-form-label">
                   Slut
                 </label>
-                <div className="col-10">
+                <div className="col-9">
                   <input
                     className="form-control"
                     type="datetime-local"
@@ -231,10 +231,10 @@ const Admin = () => {
                 </div>
               </div>
               <div className="form-group row">
-                <label className="col-sm-2 col-form-label">
+                <label className="col-sm-3 col-form-label">
                   Skapad Av
                 </label>
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                   <input
                     type="text"
                     className="form-control"

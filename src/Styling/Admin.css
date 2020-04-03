@@ -20,8 +20,8 @@ label{
 
 
 #container{
-    margin-left: 10%;   
-    margin-right: 10%;
+    margin-left: 21%;   
+    margin-right: 21%;
     background-color: rgb(11, 156, 11);
     color:white;  
 }
@@ -33,7 +33,6 @@ button{
 li {
     cursor: pointer;
 }
-
 
 .errorMessage{
     color: red;
