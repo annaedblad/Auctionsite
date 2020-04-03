@@ -97,6 +97,7 @@ const Admin = () => {
     reset();
   };
 
+  var t = new Date().toISOString().substring(0,16);
   var currentDate = new Date(); 
   let ongoingAuctions = allAuctions.filter(on => Date.parse(on.SlutDatum) > currentDate.getTime() && flag.includes(on.AuktionID) === false);  
   let list = ongoingAuctions.map(auction => {
@@ -219,6 +220,7 @@ const Admin = () => {
                     className="form-control"
                     type="datetime-local"
                     id="end"
+                    min = {(t)}
                     onChange={(e) => setEndDate(e.target.value)}
                     name="exampleRequired4"
                     ref={
