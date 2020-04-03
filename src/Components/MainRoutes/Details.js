@@ -84,27 +84,26 @@ const Details = () => {
             <div className="row mainRow">
                 {/* Här börjar Left Container */}
                 <div className="col-md-6">
-                    <Row className="alert alert-dark text-center"> 
+                    <Row className="alert status-row"> 
                         <Col>
                              <span className="lead font-weight-bold">{text}</span>
                         </Col>
                     </Row>
 
-                    <Row className="alert alert-info">
+                    <Row className="alert seller-row">
                         <Col md={6}>
-                            <h4 className="text-right">Försäljare =></h4>
+                            <h5 className="text-right">Försäljare =></h5>
                         </Col>
                         <Col md={6}>
-                            <h4 className="text-left">{specificAuction.SkapadAv}</h4>
+                            <h5 className="text-left">{specificAuction.SkapadAv}</h5>
                         </Col>
                     </Row>
-                    <Row className="alert alert-dark">
+                    <Row className="alert winner-row">
                         <Col md={12}><h5 className="text-center">{winningBid}</h5></Col>
                     </Row>
                         
-                     <Row className="text-center alert alert-info">
-                        <Col md={12}> <h5> Beskrivning </h5> </Col>
-                        <Col md={12}> {specificAuction.Beskrivning}</Col>
+                     <Row className="text-center alert description-row">
+                        <Col md={12}> <h4> Beskrivning </h4> <h5>{specificAuction.Beskrivning}</h5> </Col>
                      </Row>
                 </div>
 

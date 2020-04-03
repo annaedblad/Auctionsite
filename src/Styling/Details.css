@@ -11,9 +11,6 @@
         margin-bottom: 30px;
     }
 
-    #auctionTitle {
-        font-family: 'Indie Flower', cursive;
-    }
 
     #bud{
         height: 210px;
@@ -83,12 +80,14 @@
         background-color: rgb(11, 156, 11);
         border-radius: 5px;
         padding: 2rem;
+        
     }
 
     .contentrow{
         display:flex;
         flex-direction: column;
         justify-content: center;
+        
     }
 
     .bid-text, .price-text{
@@ -126,4 +125,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .status-row, .seller-row, .winner-row, .description-row{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(11, 156, 11);
+        text-align: center;
+    }
+
+    .description-row{
+        height:30rem;
+        align-items: flex-start;
     }
