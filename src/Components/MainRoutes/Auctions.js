@@ -30,7 +30,7 @@ const Auctions = () => {
             <img src={AuctionOpen} id="imgSold" alt=""/>
                 <div className="card-body">
                     <h5 className="card-title text-sm-center">{auction.Titel}</h5>
-                    <p className="card-text text-center">{auction.Beskrivning}</p>
+                    <p className="card-text text-center">{auction.Beskrivning.substr(0,70)}</p>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item active-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
                         <li className="list-group-item active-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
@@ -58,7 +58,7 @@ const Auctions = () => {
                       <img src={SoldAuction} id="imgSold" alt=""/>
                         <div className="card-body">
                             <h5 className="card-title text-sm-center">{auction.Titel}</h5>
-                            <p className="card-text text-center">{auction.Beskrivning}</p>
+                            <p className="card-text text-center">{auction.Beskrivning.substr(0,70)}</p>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item historic-item">Start: {new Date(Date.parse(auction.StartDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
                                 <li className="list-group-item historic-item">Slut: {new Date(Date.parse(auction.SlutDatum)).toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',','')}</li>
