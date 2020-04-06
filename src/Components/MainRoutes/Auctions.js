@@ -77,7 +77,7 @@ const Auctions = () => {
 
     return (
         <div className="auctionContainer container">
-          <h1 className="text-center">All Auctions available here</h1>
+          <h1 className="text-center">Sökresultat</h1>
           <div className="row justify-content-center">
             {getOngoing()}
             <div className="row justify-content-center">
