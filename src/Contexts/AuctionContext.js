@@ -63,7 +63,7 @@ const AuctionContextProvider = props => {
 
   const listAuctions = searchParam => {
     setSearch(searchParam);
-    console.log({searchParam})
+    console.log({searchParam})    
   };
   
   const getBids = async (auctionID) => {
