@@ -17,7 +17,7 @@ const Navbar = () => {
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-link rightItems">
                         <NavLink to="/">
-                            <span className="lead"><i className="fa fa-home"></i> Auctions</span>
+                            <span className="lead"><i className="fa fa-home"></i> Aktuella auktioner</span>
                         </NavLink>
                     </li>
                     <li className="nav-link rightItems">
@@ -36,12 +36,12 @@ const Navbar = () => {
                         <input className="form-inline form-control mr-sm-2" 
                             type="search" 
                             value={auction}
-                            placeholder="Search for auction..." 
+                            placeholder="Sök auktion..." 
                             aria-label="Search" 
                             onChange={(e) => setAuctions(e.target.value)}
                         />
                         <NavLink to="/all" className="btn btn-outline-info my-2 my-sm-0">
-                            <span > Search </span>            
+                            <span > Sök </span>            
                         </NavLink>
                     </form>  
                 </div>
