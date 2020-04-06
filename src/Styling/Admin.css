@@ -1,39 +1,43 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.card{
-    margin: 10px;
-    padding: 10px;
-    background-color: green;
+.card {
+  margin: 10px;
+  padding: 10px;
+  background-color: green;
 }
 
-label{
-    text-align: right;
+label {
+  text-align: right;
 }
 
-#left, #right{
-    height: 600px;
+#left,
+#right {
+  height: 600px;
 }
 
-
-#container{
-    margin-left: 21%;   
-    margin-right: 21%;
-    background-color: rgb(11, 156, 11);
-    color:white;  
+#container {
+  margin-left: 21%;
+  margin-right: 21%;
+  background-color: rgb(11, 156, 11);
+  color: white;
 }
 
-button{
-    margin-left: 5px;
+button {
+  margin-left: 5px;
 }
 
 li {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.errorMessage{
-    color:	#800033;
+textarea {
+  resize: none;
+}
+
+.errorMessage {
+  color: #800033;
 }
